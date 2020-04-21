@@ -36,12 +36,12 @@ message ListAllIngredientsAtHomeResponse {
     bool success = 1;
 }
 
-message GetIngredientsRequest {
-    string recipe_name = 1; 
+message GetIngredientsForAllRecipesRequest {
+    string recipe_name = 1;
 }
 
-message GetIngredientsResponse {
-    string ingredient_name = 1; 
+message GetIngredientsForAllRecipesResponse {
+    Ingredient ingredient = 1;
 }
 
 service RecipesService {
@@ -55,5 +55,5 @@ service RecipesService {
     rpc ListAllIngredientsAtHome (stream ListAllIngredientsAtHomeRequest) returns (ListAllIngredientsAtHomeResponse);
 
     // Bidirectional-streaming
-    rpc GetIngredientsForAllRecipes (GetIngredientsRequest) returns (GetIngredientsResponse);
+    rpc GetIngredientsForAllRecipes (stream GetIngredientsForAllRecipesRequest) returns (stream GetIngredientsForAllRecipesResponse);
 }

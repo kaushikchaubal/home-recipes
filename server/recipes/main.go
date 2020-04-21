@@ -46,9 +46,28 @@ func (s *server) ListAllIngredientsAtHome(stream generated.RecipesService_ListAl
 	}
 }
 
-func (s *server) GetIngredientsForAllRecipes(ctx context.Context, req *generated.GetIngredientsRequest) (*generated.GetIngredientsResponse, error) {
-	log.Printf("Received request for GetIngredientsForAllRecipes: recipe_name = %v", req.GetRecipeName())
-	return &generated.GetIngredientsResponse{IngredientName: "Flour"}, nil
+func (s *server) GetIngredientsForAllRecipes(stream generated.RecipesService_GetIngredientsForAllRecipesServer) error {
+	log.Printf("For all recipes sent, I will reply back with a list of ingredients")
+
+	for {
+		recipe, err := stream.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return err
+		}
+
+		log.Printf("You have requested ingredients for %v", recipe.GetRecipeName())
+
+		RecipeToIngredients := data.RecipeToIngredientsMap()
+		ingredients := RecipeToIngredients[recipe.GetRecipeName()]
+		for _, item := range ingredients {
+			stream.Send(&generated.GetIngredientsForAllRecipesResponse{Ingredient: &item})
+		}
+	}
+
+	return nil
 }
 
 func main() {

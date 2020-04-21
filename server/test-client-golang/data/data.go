@@ -17,3 +17,15 @@ var Ingredients = []generated.Ingredient{
 		Quantity: "1 kg",
 	},
 }
+
+// Recipes - Mock data for all the recipes to send for GetIngredientsForAllRecipes endpoint
+var Recipes = []generated.Recipe{
+	{
+		Name:    "Bread",
+		Cuisine: "International",
+	},
+	{
+		Name:    "Nachos",
+		Cuisine: "Mexican",
+	},
+}

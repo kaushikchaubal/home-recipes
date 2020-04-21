@@ -79,11 +79,38 @@ func main() {
 
 	// Testing GetIngredientsForAllRecipes method
 	{
-		response, err := c.GetIngredientsForAllRecipes(ctx, &generated.GetIngredientsRequest{RecipeName: "Bread"})
+		stream, err := c.GetIngredientsForAllRecipes(ctx)
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
-		log.Printf("Response received for GetIngredientsForAllRecipes: %s", response)
+
+		// Receive stream from server for list of ingredients
+		doneCh := make(chan struct{})
+		go func() {
+			for {
+				ingredients, err := stream.Recv()
+				if err == io.EOF {
+					doneCh <- struct{}{}
+					break
+				}
+				if err != nil {
+					log.Fatalf("Error: %v", err)
+				}
+
+				log.Printf("Ingredients needed: %s", ingredients)
+			}
+		}()
+
+		// Send stream to server of the list of recipes
+		for _, item := range data.Recipes {
+			err := stream.Send(&generated.GetIngredientsForAllRecipesRequest{RecipeName: item.Name})
+			if err != nil {
+				log.Fatalf("Error: %v", err)
+			}
+		}
+
+		stream.CloseSend()
+		<-doneCh
 	}
 
 }
