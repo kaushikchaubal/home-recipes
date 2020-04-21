@@ -11,7 +11,6 @@ import (
 
 const (
 	address = "localhost:50000"
-	name    = "Bread"
 )
 
 func main() {
@@ -25,15 +24,25 @@ func main() {
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{RecipeName: name})
+
+	// Testing AddRecipe method
+	response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{RecipeName: "Bread"})
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
 	log.Printf("Response received for AddRecipe %s", response)
 
+	// Testing ListAllRecipes method
 	secondResponse, err := c.ListAllRecipes(ctx, &generated.ListAllRecipesRequest{})
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
 	log.Printf("Response received for ListAllRecipes: %s", secondResponse)
+
+	// Testing UploadPhoto method
+	thirdResponse, err := c.UploadPhoto(ctx, &generated.UploadPhotoRequest{PhotoName: "Kavee.jpg", PhotoType: "jpg"})
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
+	log.Printf("Response received for UploadPhoto: %s", thirdResponse)
 }

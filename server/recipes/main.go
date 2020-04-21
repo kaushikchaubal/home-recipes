@@ -23,6 +23,14 @@ func (s *server) ListAllRecipes(ctx context.Context, req *generated.ListAllRecip
 	return &generated.ListAllRecipesResponse{}, nil
 }
 
+func (s *server) UploadPhoto(ctx context.Context, req *generated.UploadPhotoRequest) (*generated.UploadPhotoResponse, error) {
+	log.Printf("Received request for UploadPhoto with data: photo_name = %v, photo_type = %v", req.GetPhotoName(), req.GetPhotoType())
+
+	// do something smart with this picture that you just received!
+
+	return &generated.UploadPhotoResponse{Yayy: "Booyaaa!"}, nil
+}
+
 func main() {
 	listener, err := net.Listen("tcp", port)
 

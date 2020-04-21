@@ -25,10 +25,22 @@ message Recipe {
     string type = 2;
 }
 
+message UploadPhotoRequest {
+    string photo_name = 1;
+    string photo_type = 2;
+}
+
+message UploadPhotoResponse {
+    string yayy = 1;
+}
+
 service RecipesService {
     // unary
     rpc AddRecipe (AddRecipeRequest) returns (AddRecipeResponse);
 
     // server-streaming
     rpc ListAllRecipes (ListAllRecipesRequest) returns (ListAllRecipesResponse);
+
+    // client-streaming
+    rpc UploadPhoto (UploadPhotoRequest) returns (UploadPhotoResponse);
 }
