@@ -5,10 +5,17 @@
     npm init
     ```
 
-3. Install the grpc & path package for node
+3. Install the grpc, path, @grpc/proto-loader packages for node
     ```
     npm install grpc
     npm install path
+    npm install @grpc/proto-loader
     ```
 
-4
+4. Implement the client 
+
+5. Run the client
+    ```
+    cd home-recipes
+    node server/test-client-node/app.js 
+    ```
