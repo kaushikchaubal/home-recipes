@@ -1,3 +1,4 @@
+.DS_Store
 server/test-client-node/node_modules/
 server/test-client-node/package-lock.json
 out/
