@@ -29,7 +29,6 @@ function main() {
             console.log(response);
         });
     }
-    
 
     // Testing listAllRecipes method
     {
@@ -65,6 +64,31 @@ function main() {
             call.write({ingredient: item});
           });
         
+        call.end();
+    }
+
+    // Testing getIngredientsForAllRecipes method
+    {
+        var recipesData = [
+            {
+                name: "Bread",
+                cuisine: "International"
+            },
+            {
+                name: "Nachos",
+                cuisine: "Mexican"
+            }
+        ]
+
+        const call = client.getIngredientsForAllRecipes()
+        call.on('data', function (data) {
+            console.log(data.ingredient);
+        });
+
+        recipesData.forEach(function(item) {
+            call.write({recipe: item})
+        });
+
         call.end();
     }
     
