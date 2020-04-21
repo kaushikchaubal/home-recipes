@@ -103,7 +103,7 @@ func main() {
 
 		// Send stream to server of the list of recipes
 		for _, item := range data.Recipes {
-			err := stream.Send(&generated.GetIngredientsForAllRecipesRequest{RecipeName: item.Name})
+			err := stream.Send(&generated.GetIngredientsForAllRecipesRequest{Recipe: &item})
 			if err != nil {
 				log.Fatalf("Error: %v", err)
 			}

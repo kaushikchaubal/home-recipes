@@ -58,10 +58,10 @@ func (s *server) GetIngredientsForAllRecipes(stream generated.RecipesService_Get
 			return err
 		}
 
-		log.Printf("You have requested ingredients for %v", recipe.GetRecipeName())
+		log.Printf("You have requested ingredients for %v", recipe.GetRecipe().GetName())
 
 		RecipeToIngredients := data.RecipeToIngredientsMap()
-		ingredients := RecipeToIngredients[recipe.GetRecipeName()]
+		ingredients := RecipeToIngredients[recipe.GetRecipe().GetName()]
 		for _, item := range ingredients {
 			stream.Send(&generated.GetIngredientsForAllRecipesResponse{Ingredient: &item})
 		}
