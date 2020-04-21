@@ -5,7 +5,7 @@ package recipes;
 option go_package = "recipes/generated";
 
 message AddRecipeRequest {
-    string recipe_name = 1;
+    Recipe recipe = 1;
 }
 
 message AddRecipeResponse {

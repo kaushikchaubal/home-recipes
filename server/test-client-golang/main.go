@@ -27,7 +27,9 @@ func main() {
 	defer cancel()
 
 	// Testing AddRecipe method
-	response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{RecipeName: "Bread"})
+	newRecipe := &generated.Recipe{Name: "Sushi", Cuisine: "Japanese"}
+
+	response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{Recipe: newRecipe})
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}

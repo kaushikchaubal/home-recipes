@@ -15,12 +15,12 @@ const port = ":50000"
 type server struct{}
 
 func (s *server) AddRecipe(ctx context.Context, req *generated.AddRecipeRequest) (*generated.AddRecipeResponse, error) {
-	log.Printf("Received request for AddRecipe with data: %v", req.GetRecipeName())
+	log.Printf("Adding new recipe\t\tName: %v, Cuisine: %v", req.GetRecipe().GetName(), req.GetRecipe().GetCuisine())
 	return &generated.AddRecipeResponse{Success: true}, nil
 }
 
 func (s *server) ListAllRecipes(req *generated.ListAllRecipesRequest, stream generated.RecipesService_ListAllRecipesServer) error {
-	log.Printf("Received request for ListAllRecipes")
+	log.Printf("Listing all available recipes")
 
 	for _, recipe := range data.Recipes {
 		stream.Send(&generated.ListAllRecipesResponse{Recipe: &recipe})
