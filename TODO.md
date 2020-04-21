@@ -10,5 +10,6 @@
 ## Could
 - [ ] Convert to use go.mod
 - [ ] Write documentation to run server in goland
+- [ ] Break proto defs to multiple files
 
 ## Wont

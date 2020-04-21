@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"home-recipes/server/test-client-golang/recipes/generated"
+	"io"
 	"log"
 	"time"
 
@@ -33,11 +34,22 @@ func main() {
 	log.Printf("Response received for AddRecipe %s", response)
 
 	// Testing ListAllRecipes method
-	secondResponse, err := c.ListAllRecipes(ctx, &generated.ListAllRecipesRequest{})
+	stream, err := c.ListAllRecipes(ctx, &generated.ListAllRecipesRequest{})
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
-	log.Printf("Response received for ListAllRecipes: %s", secondResponse)
+
+	for {
+		response, err := stream.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		log.Printf("Response received for ListAllRecipes: %s", response)
+	}
 
 	// Testing UploadPhoto method
 	thirdResponse, err := c.UploadPhoto(ctx, &generated.UploadPhotoRequest{PhotoName: "Kavee.jpg", PhotoType: "jpg"})

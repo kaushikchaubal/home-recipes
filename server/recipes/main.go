@@ -1,6 +1,7 @@
 package main
 
 import (
+	"home-recipes/server/recipes/data"
 	"home-recipes/server/recipes/generated"
 	"log"
 	"net"
@@ -18,9 +19,14 @@ func (s *server) AddRecipe(ctx context.Context, req *generated.AddRecipeRequest)
 	return &generated.AddRecipeResponse{Success: true}, nil
 }
 
-func (s *server) ListAllRecipes(ctx context.Context, req *generated.ListAllRecipesRequest) (*generated.ListAllRecipesResponse, error) {
+func (s *server) ListAllRecipes(req *generated.ListAllRecipesRequest, stream generated.RecipesService_ListAllRecipesServer) error {
 	log.Printf("Received request for ListAllRecipes")
-	return &generated.ListAllRecipesResponse{}, nil
+
+	for _, recipe := range data.Recipes {
+		stream.Send(&generated.ListAllRecipesResponse{Recipe: &recipe})
+	}
+
+	return nil
 }
 
 func (s *server) UploadPhoto(ctx context.Context, req *generated.UploadPhotoRequest) (*generated.UploadPhotoResponse, error) {
