@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"google.golang.org/grpc"
 	"home-recipes/server/test-client-golang/recipes/generated"
 	"log"
 	"time"
+
+	"google.golang.org/grpc"
 )
 
 const (
@@ -26,7 +27,13 @@ func main() {
 	defer cancel()
 	response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{RecipeName: name})
 	if err != nil {
-		log.Fatalf("could not greet: %v", err)
+		log.Fatalf("Error: %v", err)
 	}
-	log.Printf("Response received. %s", response)
+	log.Printf("Response received for AddRecipe %s", response)
+
+	secondResponse, err := c.ListAllRecipes(ctx, &generated.ListAllRecipesRequest{})
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
+	log.Printf("Response received for ListAllRecipes: %s", secondResponse)
 }

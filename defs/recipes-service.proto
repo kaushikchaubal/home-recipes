@@ -12,7 +12,23 @@ message AddRecipeResponse {
     bool success = 1;
 }
 
+message ListAllRecipesRequest {
+
+}
+
+message ListAllRecipesResponse {
+    repeated Recipe recipe = 1;
+}
+
+message Recipe {
+    string name = 1;
+    string type = 2;
+}
+
 service RecipesService {
     // unary
     rpc AddRecipe (AddRecipeRequest) returns (AddRecipeResponse);
+
+    // server-streaming
+    rpc ListAllRecipes (ListAllRecipesRequest) returns (ListAllRecipesResponse);
 }

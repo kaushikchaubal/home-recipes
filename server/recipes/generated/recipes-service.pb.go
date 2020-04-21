@@ -123,6 +123,146 @@ func (x *AddRecipeResponse) GetSuccess() bool {
 	return false
 }
 
+type ListAllRecipesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ListAllRecipesRequest) Reset() {
+	*x = ListAllRecipesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_defs_recipes_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListAllRecipesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAllRecipesRequest) ProtoMessage() {}
+
+func (x *ListAllRecipesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_defs_recipes_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAllRecipesRequest.ProtoReflect.Descriptor instead.
+func (*ListAllRecipesRequest) Descriptor() ([]byte, []int) {
+	return file_defs_recipes_service_proto_rawDescGZIP(), []int{2}
+}
+
+type ListAllRecipesResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Recipe []*Recipe `protobuf:"bytes,1,rep,name=recipe,proto3" json:"recipe,omitempty"`
+}
+
+func (x *ListAllRecipesResponse) Reset() {
+	*x = ListAllRecipesResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_defs_recipes_service_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListAllRecipesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAllRecipesResponse) ProtoMessage() {}
+
+func (x *ListAllRecipesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_defs_recipes_service_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAllRecipesResponse.ProtoReflect.Descriptor instead.
+func (*ListAllRecipesResponse) Descriptor() ([]byte, []int) {
+	return file_defs_recipes_service_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ListAllRecipesResponse) GetRecipe() []*Recipe {
+	if x != nil {
+		return x.Recipe
+	}
+	return nil
+}
+
+type Recipe struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
+}
+
+func (x *Recipe) Reset() {
+	*x = Recipe{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_defs_recipes_service_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Recipe) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Recipe) ProtoMessage() {}
+
+func (x *Recipe) ProtoReflect() protoreflect.Message {
+	mi := &file_defs_recipes_service_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Recipe.ProtoReflect.Descriptor instead.
+func (*Recipe) Descriptor() ([]byte, []int) {
+	return file_defs_recipes_service_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Recipe) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Recipe) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
 var File_defs_recipes_service_proto protoreflect.FileDescriptor
 
 var file_defs_recipes_service_proto_rawDesc = []byte{
@@ -134,14 +274,28 @@ var file_defs_recipes_service_proto_rawDesc = []byte{
 	0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x2d, 0x0a, 0x11, 0x41, 0x64,
 	0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x32, 0x54, 0x0a, 0x0e, 0x52, 0x65, 0x63,
-	0x69, 0x70, 0x65, 0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x09, 0x41,
-	0x64, 0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x12, 0x19, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70,
-	0x65, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x41, 0x64,
-	0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
-	0x13, 0x5a, 0x11, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72,
-	0x61, 0x74, 0x65, 0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x22, 0x17, 0x0a, 0x15, 0x4c, 0x69, 0x73,
+	0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x22, 0x41, 0x0a, 0x16, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63,
+	0x69, 0x70, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x27, 0x0a, 0x06,
+	0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x72,
+	0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x06, 0x72,
+	0x65, 0x63, 0x69, 0x70, 0x65, 0x22, 0x30, 0x0a, 0x06, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x12,
+	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x32, 0xa7, 0x01, 0x0a, 0x0e, 0x52, 0x65, 0x63, 0x69,
+	0x70, 0x65, 0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x09, 0x41, 0x64,
+	0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x12, 0x19, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65,
+	0x73, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x41, 0x64, 0x64,
+	0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x51,
+	0x0a, 0x0e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73,
+	0x12, 0x1e, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41,
+	0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x1f, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41,
+	0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x42, 0x13, 0x5a, 0x11, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2f, 0x67, 0x65, 0x6e,
+	0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -156,19 +310,25 @@ func file_defs_recipes_service_proto_rawDescGZIP() []byte {
 	return file_defs_recipes_service_proto_rawDescData
 }
 
-var file_defs_recipes_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_defs_recipes_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_defs_recipes_service_proto_goTypes = []interface{}{
-	(*AddRecipeRequest)(nil),  // 0: recipes.AddRecipeRequest
-	(*AddRecipeResponse)(nil), // 1: recipes.AddRecipeResponse
+	(*AddRecipeRequest)(nil),       // 0: recipes.AddRecipeRequest
+	(*AddRecipeResponse)(nil),      // 1: recipes.AddRecipeResponse
+	(*ListAllRecipesRequest)(nil),  // 2: recipes.ListAllRecipesRequest
+	(*ListAllRecipesResponse)(nil), // 3: recipes.ListAllRecipesResponse
+	(*Recipe)(nil),                 // 4: recipes.Recipe
 }
 var file_defs_recipes_service_proto_depIdxs = []int32{
-	0, // 0: recipes.RecipesService.AddRecipe:input_type -> recipes.AddRecipeRequest
-	1, // 1: recipes.RecipesService.AddRecipe:output_type -> recipes.AddRecipeResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	4, // 0: recipes.ListAllRecipesResponse.recipe:type_name -> recipes.Recipe
+	0, // 1: recipes.RecipesService.AddRecipe:input_type -> recipes.AddRecipeRequest
+	2, // 2: recipes.RecipesService.ListAllRecipes:input_type -> recipes.ListAllRecipesRequest
+	1, // 3: recipes.RecipesService.AddRecipe:output_type -> recipes.AddRecipeResponse
+	3, // 4: recipes.RecipesService.ListAllRecipes:output_type -> recipes.ListAllRecipesResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_defs_recipes_service_proto_init() }
@@ -201,6 +361,42 @@ func file_defs_recipes_service_proto_init() {
 				return nil
 			}
 		}
+		file_defs_recipes_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListAllRecipesRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_defs_recipes_service_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListAllRecipesResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_defs_recipes_service_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Recipe); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -208,7 +404,7 @@ func file_defs_recipes_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_defs_recipes_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -236,6 +432,8 @@ const _ = grpc.SupportPackageIsVersion6
 type RecipesServiceClient interface {
 	// unary
 	AddRecipe(ctx context.Context, in *AddRecipeRequest, opts ...grpc.CallOption) (*AddRecipeResponse, error)
+	// server-streaming
+	ListAllRecipes(ctx context.Context, in *ListAllRecipesRequest, opts ...grpc.CallOption) (*ListAllRecipesResponse, error)
 }
 
 type recipesServiceClient struct {
@@ -255,10 +453,21 @@ func (c *recipesServiceClient) AddRecipe(ctx context.Context, in *AddRecipeReque
 	return out, nil
 }
 
+func (c *recipesServiceClient) ListAllRecipes(ctx context.Context, in *ListAllRecipesRequest, opts ...grpc.CallOption) (*ListAllRecipesResponse, error) {
+	out := new(ListAllRecipesResponse)
+	err := c.cc.Invoke(ctx, "/recipes.RecipesService/ListAllRecipes", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RecipesServiceServer is the server API for RecipesService service.
 type RecipesServiceServer interface {
 	// unary
 	AddRecipe(context.Context, *AddRecipeRequest) (*AddRecipeResponse, error)
+	// server-streaming
+	ListAllRecipes(context.Context, *ListAllRecipesRequest) (*ListAllRecipesResponse, error)
 }
 
 // UnimplementedRecipesServiceServer can be embedded to have forward compatible implementations.
@@ -267,6 +476,9 @@ type UnimplementedRecipesServiceServer struct {
 
 func (*UnimplementedRecipesServiceServer) AddRecipe(context.Context, *AddRecipeRequest) (*AddRecipeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddRecipe not implemented")
+}
+func (*UnimplementedRecipesServiceServer) ListAllRecipes(context.Context, *ListAllRecipesRequest) (*ListAllRecipesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAllRecipes not implemented")
 }
 
 func RegisterRecipesServiceServer(s *grpc.Server, srv RecipesServiceServer) {
@@ -291,6 +503,24 @@ func _RecipesService_AddRecipe_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RecipesService_ListAllRecipes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAllRecipesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecipesServiceServer).ListAllRecipes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/recipes.RecipesService/ListAllRecipes",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecipesServiceServer).ListAllRecipes(ctx, req.(*ListAllRecipesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _RecipesService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "recipes.RecipesService",
 	HandlerType: (*RecipesServiceServer)(nil),
@@ -298,6 +528,10 @@ var _RecipesService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddRecipe",
 			Handler:    _RecipesService_AddRecipe_Handler,
+		},
+		{
+			MethodName: "ListAllRecipes",
+			Handler:    _RecipesService_ListAllRecipes_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
