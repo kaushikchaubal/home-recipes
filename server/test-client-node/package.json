@@ -1,0 +1,16 @@
+{
+  "name": "test-client-node",
+  "version": "1.0.0",
+  "description": "Test client for Recipes Server written in node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.4",
+    "grpc": "^1.24.2",
+    "path": "^0.12.7"
+  }
+}
