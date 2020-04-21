@@ -12,7 +12,14 @@ const recipes = grpc.loadPackageDefinition(packageDefinition).recipes;
 
 function main() {
     const client = new recipes.RecipesService(SERVER_ADDR, grpc.credentials.createInsecure());
-    client.addRecipe({recipeName: "Pizza"}, function(error, response) {
+
+    // Testing AddRecipe method
+    var newRecipe = {
+        name: "Samosa",
+        cuisine: "Indian"
+    }
+
+    client.addRecipe({recipe: newRecipe}, function(error, response) {
         if(error) {
             console.log(error);
             return;
