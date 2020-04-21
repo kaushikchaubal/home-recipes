@@ -263,17 +263,17 @@ func (x *Recipe) GetCuisine() string {
 	return ""
 }
 
-type UploadPhotoRequest struct {
+type Ingredient struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	PhotoName string `protobuf:"bytes,1,opt,name=photo_name,json=photoName,proto3" json:"photo_name,omitempty"`
-	PhotoType string `protobuf:"bytes,2,opt,name=photo_type,json=photoType,proto3" json:"photo_type,omitempty"`
+	Name     string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Quantity string `protobuf:"bytes,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
 }
 
-func (x *UploadPhotoRequest) Reset() {
-	*x = UploadPhotoRequest{}
+func (x *Ingredient) Reset() {
+	*x = Ingredient{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_defs_recipes_service_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -281,13 +281,13 @@ func (x *UploadPhotoRequest) Reset() {
 	}
 }
 
-func (x *UploadPhotoRequest) String() string {
+func (x *Ingredient) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UploadPhotoRequest) ProtoMessage() {}
+func (*Ingredient) ProtoMessage() {}
 
-func (x *UploadPhotoRequest) ProtoReflect() protoreflect.Message {
+func (x *Ingredient) ProtoReflect() protoreflect.Message {
 	mi := &file_defs_recipes_service_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -299,35 +299,35 @@ func (x *UploadPhotoRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UploadPhotoRequest.ProtoReflect.Descriptor instead.
-func (*UploadPhotoRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use Ingredient.ProtoReflect.Descriptor instead.
+func (*Ingredient) Descriptor() ([]byte, []int) {
 	return file_defs_recipes_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UploadPhotoRequest) GetPhotoName() string {
+func (x *Ingredient) GetName() string {
 	if x != nil {
-		return x.PhotoName
+		return x.Name
 	}
 	return ""
 }
 
-func (x *UploadPhotoRequest) GetPhotoType() string {
+func (x *Ingredient) GetQuantity() string {
 	if x != nil {
-		return x.PhotoType
+		return x.Quantity
 	}
 	return ""
 }
 
-type UploadPhotoResponse struct {
+type ListAllIngredientsAtHomeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Yayy string `protobuf:"bytes,1,opt,name=yayy,proto3" json:"yayy,omitempty"`
+	Ingredient *Ingredient `protobuf:"bytes,1,opt,name=ingredient,proto3" json:"ingredient,omitempty"`
 }
 
-func (x *UploadPhotoResponse) Reset() {
-	*x = UploadPhotoResponse{}
+func (x *ListAllIngredientsAtHomeRequest) Reset() {
+	*x = ListAllIngredientsAtHomeRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_defs_recipes_service_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -335,13 +335,13 @@ func (x *UploadPhotoResponse) Reset() {
 	}
 }
 
-func (x *UploadPhotoResponse) String() string {
+func (x *ListAllIngredientsAtHomeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UploadPhotoResponse) ProtoMessage() {}
+func (*ListAllIngredientsAtHomeRequest) ProtoMessage() {}
 
-func (x *UploadPhotoResponse) ProtoReflect() protoreflect.Message {
+func (x *ListAllIngredientsAtHomeRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_defs_recipes_service_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -353,16 +353,63 @@ func (x *UploadPhotoResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UploadPhotoResponse.ProtoReflect.Descriptor instead.
-func (*UploadPhotoResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListAllIngredientsAtHomeRequest.ProtoReflect.Descriptor instead.
+func (*ListAllIngredientsAtHomeRequest) Descriptor() ([]byte, []int) {
 	return file_defs_recipes_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *UploadPhotoResponse) GetYayy() string {
+func (x *ListAllIngredientsAtHomeRequest) GetIngredient() *Ingredient {
 	if x != nil {
-		return x.Yayy
+		return x.Ingredient
 	}
-	return ""
+	return nil
+}
+
+type ListAllIngredientsAtHomeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+}
+
+func (x *ListAllIngredientsAtHomeResponse) Reset() {
+	*x = ListAllIngredientsAtHomeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_defs_recipes_service_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListAllIngredientsAtHomeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAllIngredientsAtHomeResponse) ProtoMessage() {}
+
+func (x *ListAllIngredientsAtHomeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_defs_recipes_service_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAllIngredientsAtHomeResponse.ProtoReflect.Descriptor instead.
+func (*ListAllIngredientsAtHomeResponse) Descriptor() ([]byte, []int) {
+	return file_defs_recipes_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListAllIngredientsAtHomeResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
 }
 
 type GetIngredientsRequest struct {
@@ -376,7 +423,7 @@ type GetIngredientsRequest struct {
 func (x *GetIngredientsRequest) Reset() {
 	*x = GetIngredientsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_defs_recipes_service_proto_msgTypes[7]
+		mi := &file_defs_recipes_service_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -389,7 +436,7 @@ func (x *GetIngredientsRequest) String() string {
 func (*GetIngredientsRequest) ProtoMessage() {}
 
 func (x *GetIngredientsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_defs_recipes_service_proto_msgTypes[7]
+	mi := &file_defs_recipes_service_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -402,7 +449,7 @@ func (x *GetIngredientsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIngredientsRequest.ProtoReflect.Descriptor instead.
 func (*GetIngredientsRequest) Descriptor() ([]byte, []int) {
-	return file_defs_recipes_service_proto_rawDescGZIP(), []int{7}
+	return file_defs_recipes_service_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetIngredientsRequest) GetRecipeName() string {
@@ -423,7 +470,7 @@ type GetIngredientsResponse struct {
 func (x *GetIngredientsResponse) Reset() {
 	*x = GetIngredientsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_defs_recipes_service_proto_msgTypes[8]
+		mi := &file_defs_recipes_service_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -436,7 +483,7 @@ func (x *GetIngredientsResponse) String() string {
 func (*GetIngredientsResponse) ProtoMessage() {}
 
 func (x *GetIngredientsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_defs_recipes_service_proto_msgTypes[8]
+	mi := &file_defs_recipes_service_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -449,7 +496,7 @@ func (x *GetIngredientsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIngredientsResponse.ProtoReflect.Descriptor instead.
 func (*GetIngredientsResponse) Descriptor() ([]byte, []int) {
-	return file_defs_recipes_service_proto_rawDescGZIP(), []int{8}
+	return file_defs_recipes_service_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetIngredientsResponse) GetIngredientName() string {
@@ -480,46 +527,54 @@ var file_defs_recipes_service_proto_rawDesc = []byte{
 	0x06, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x63,
 	0x75, 0x69, 0x73, 0x69, 0x6e, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x75,
-	0x69, 0x73, 0x69, 0x6e, 0x65, 0x22, 0x52, 0x0a, 0x12, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x50,
-	0x68, 0x6f, 0x74, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x70,
-	0x68, 0x6f, 0x74, 0x6f, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x70, 0x68, 0x6f, 0x74, 0x6f, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x68,
-	0x6f, 0x74, 0x6f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
-	0x70, 0x68, 0x6f, 0x74, 0x6f, 0x54, 0x79, 0x70, 0x65, 0x22, 0x29, 0x0a, 0x13, 0x55, 0x70, 0x6c,
-	0x6f, 0x61, 0x64, 0x50, 0x68, 0x6f, 0x74, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x12, 0x0a, 0x04, 0x79, 0x61, 0x79, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x79, 0x61, 0x79, 0x79, 0x22, 0x38, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65,
-	0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1f, 0x0a,
-	0x0b, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x41,
-	0x0a, 0x16, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x27, 0x0a, 0x0f, 0x69, 0x6e, 0x67, 0x72,
-	0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0e, 0x69, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x4e, 0x61, 0x6d,
-	0x65, 0x32, 0xd3, 0x02, 0x0a, 0x0e, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x09, 0x41, 0x64, 0x64, 0x52, 0x65, 0x63, 0x69, 0x70,
-	0x65, 0x12, 0x19, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x52,
-	0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x72,
-	0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x53, 0x0a, 0x0e, 0x4c, 0x69, 0x73, 0x74,
-	0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x12, 0x1e, 0x2e, 0x72, 0x65, 0x63,
-	0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69,
-	0x70, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x72, 0x65, 0x63,
-	0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69,
-	0x70, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x30, 0x01, 0x12, 0x48, 0x0a,
-	0x0b, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x50, 0x68, 0x6f, 0x74, 0x6f, 0x12, 0x1b, 0x2e, 0x72,
-	0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x50, 0x68, 0x6f,
-	0x74, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x72, 0x65, 0x63, 0x69,
-	0x70, 0x65, 0x73, 0x2e, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x50, 0x68, 0x6f, 0x74, 0x6f, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5e, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x49, 0x6e,
-	0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x6f, 0x72, 0x41, 0x6c, 0x6c, 0x52,
-	0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x12, 0x1e, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73,
-	0x2e, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73,
-	0x2e, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x13, 0x5a, 0x11, 0x72, 0x65, 0x63, 0x69, 0x70,
-	0x65, 0x73, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x73, 0x69, 0x6e, 0x65, 0x22, 0x3c, 0x0a, 0x0a, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69,
+	0x65, 0x6e, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x71, 0x75, 0x61, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x71, 0x75, 0x61, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x22, 0x56, 0x0a, 0x1f, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x49, 0x6e,
+	0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x41, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x33, 0x0a, 0x0a, 0x69, 0x6e, 0x67, 0x72, 0x65, 0x64,
+	0x69, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x72, 0x65, 0x63,
+	0x69, 0x70, 0x65, 0x73, 0x2e, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x52,
+	0x0a, 0x69, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x22, 0x3c, 0x0a, 0x20, 0x4c,
+	0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74,
+	0x73, 0x41, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
+	0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x22, 0x38, 0x0a, 0x15, 0x47, 0x65, 0x74,
+	0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x5f, 0x6e, 0x61, 0x6d,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x4e,
+	0x61, 0x6d, 0x65, 0x22, 0x41, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64,
+	0x69, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x27, 0x0a,
+	0x0f, 0x69, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x69, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65,
+	0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x32, 0xfc, 0x02, 0x0a, 0x0e, 0x52, 0x65, 0x63, 0x69, 0x70,
+	0x65, 0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x42, 0x0a, 0x09, 0x41, 0x64, 0x64,
+	0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x12, 0x19, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73,
+	0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x1a, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x52,
+	0x65, 0x63, 0x69, 0x70, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x53, 0x0a,
+	0x0e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x12,
+	0x1e, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c,
+	0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x1f, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c,
+	0x6c, 0x52, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x30, 0x01, 0x12, 0x71, 0x0a, 0x18, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x49, 0x6e, 0x67,
+	0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x41, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x28,
+	0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c,
+	0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x41, 0x74, 0x48, 0x6f, 0x6d,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70,
+	0x65, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x41, 0x6c, 0x6c, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64,
+	0x69, 0x65, 0x6e, 0x74, 0x73, 0x41, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x28, 0x01, 0x12, 0x5e, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x67, 0x72,
+	0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x46, 0x6f, 0x72, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x63,
+	0x69, 0x70, 0x65, 0x73, 0x12, 0x1e, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73, 0x2e, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x67, 0x72, 0x65, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x13, 0x5a, 0x11, 0x72, 0x65, 0x63, 0x69, 0x70, 0x65, 0x73,
+	0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -534,34 +589,36 @@ func file_defs_recipes_service_proto_rawDescGZIP() []byte {
 	return file_defs_recipes_service_proto_rawDescData
 }
 
-var file_defs_recipes_service_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_defs_recipes_service_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_defs_recipes_service_proto_goTypes = []interface{}{
-	(*AddRecipeRequest)(nil),       // 0: recipes.AddRecipeRequest
-	(*AddRecipeResponse)(nil),      // 1: recipes.AddRecipeResponse
-	(*ListAllRecipesRequest)(nil),  // 2: recipes.ListAllRecipesRequest
-	(*ListAllRecipesResponse)(nil), // 3: recipes.ListAllRecipesResponse
-	(*Recipe)(nil),                 // 4: recipes.Recipe
-	(*UploadPhotoRequest)(nil),     // 5: recipes.UploadPhotoRequest
-	(*UploadPhotoResponse)(nil),    // 6: recipes.UploadPhotoResponse
-	(*GetIngredientsRequest)(nil),  // 7: recipes.GetIngredientsRequest
-	(*GetIngredientsResponse)(nil), // 8: recipes.GetIngredientsResponse
+	(*AddRecipeRequest)(nil),                 // 0: recipes.AddRecipeRequest
+	(*AddRecipeResponse)(nil),                // 1: recipes.AddRecipeResponse
+	(*ListAllRecipesRequest)(nil),            // 2: recipes.ListAllRecipesRequest
+	(*ListAllRecipesResponse)(nil),           // 3: recipes.ListAllRecipesResponse
+	(*Recipe)(nil),                           // 4: recipes.Recipe
+	(*Ingredient)(nil),                       // 5: recipes.Ingredient
+	(*ListAllIngredientsAtHomeRequest)(nil),  // 6: recipes.ListAllIngredientsAtHomeRequest
+	(*ListAllIngredientsAtHomeResponse)(nil), // 7: recipes.ListAllIngredientsAtHomeResponse
+	(*GetIngredientsRequest)(nil),            // 8: recipes.GetIngredientsRequest
+	(*GetIngredientsResponse)(nil),           // 9: recipes.GetIngredientsResponse
 }
 var file_defs_recipes_service_proto_depIdxs = []int32{
 	4, // 0: recipes.AddRecipeRequest.recipe:type_name -> recipes.Recipe
 	4, // 1: recipes.ListAllRecipesResponse.recipe:type_name -> recipes.Recipe
-	0, // 2: recipes.RecipesService.AddRecipe:input_type -> recipes.AddRecipeRequest
-	2, // 3: recipes.RecipesService.ListAllRecipes:input_type -> recipes.ListAllRecipesRequest
-	5, // 4: recipes.RecipesService.UploadPhoto:input_type -> recipes.UploadPhotoRequest
-	7, // 5: recipes.RecipesService.GetIngredientsForAllRecipes:input_type -> recipes.GetIngredientsRequest
-	1, // 6: recipes.RecipesService.AddRecipe:output_type -> recipes.AddRecipeResponse
-	3, // 7: recipes.RecipesService.ListAllRecipes:output_type -> recipes.ListAllRecipesResponse
-	6, // 8: recipes.RecipesService.UploadPhoto:output_type -> recipes.UploadPhotoResponse
-	8, // 9: recipes.RecipesService.GetIngredientsForAllRecipes:output_type -> recipes.GetIngredientsResponse
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	5, // 2: recipes.ListAllIngredientsAtHomeRequest.ingredient:type_name -> recipes.Ingredient
+	0, // 3: recipes.RecipesService.AddRecipe:input_type -> recipes.AddRecipeRequest
+	2, // 4: recipes.RecipesService.ListAllRecipes:input_type -> recipes.ListAllRecipesRequest
+	6, // 5: recipes.RecipesService.ListAllIngredientsAtHome:input_type -> recipes.ListAllIngredientsAtHomeRequest
+	8, // 6: recipes.RecipesService.GetIngredientsForAllRecipes:input_type -> recipes.GetIngredientsRequest
+	1, // 7: recipes.RecipesService.AddRecipe:output_type -> recipes.AddRecipeResponse
+	3, // 8: recipes.RecipesService.ListAllRecipes:output_type -> recipes.ListAllRecipesResponse
+	7, // 9: recipes.RecipesService.ListAllIngredientsAtHome:output_type -> recipes.ListAllIngredientsAtHomeResponse
+	9, // 10: recipes.RecipesService.GetIngredientsForAllRecipes:output_type -> recipes.GetIngredientsResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_defs_recipes_service_proto_init() }
@@ -631,7 +688,7 @@ func file_defs_recipes_service_proto_init() {
 			}
 		}
 		file_defs_recipes_service_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UploadPhotoRequest); i {
+			switch v := v.(*Ingredient); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -643,7 +700,7 @@ func file_defs_recipes_service_proto_init() {
 			}
 		}
 		file_defs_recipes_service_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UploadPhotoResponse); i {
+			switch v := v.(*ListAllIngredientsAtHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -655,7 +712,7 @@ func file_defs_recipes_service_proto_init() {
 			}
 		}
 		file_defs_recipes_service_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetIngredientsRequest); i {
+			switch v := v.(*ListAllIngredientsAtHomeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -667,6 +724,18 @@ func file_defs_recipes_service_proto_init() {
 			}
 		}
 		file_defs_recipes_service_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetIngredientsRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_defs_recipes_service_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetIngredientsResponse); i {
 			case 0:
 				return &v.state
@@ -685,7 +754,7 @@ func file_defs_recipes_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_defs_recipes_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -716,7 +785,7 @@ type RecipesServiceClient interface {
 	// server-streaming
 	ListAllRecipes(ctx context.Context, in *ListAllRecipesRequest, opts ...grpc.CallOption) (RecipesService_ListAllRecipesClient, error)
 	// client-streaming
-	UploadPhoto(ctx context.Context, in *UploadPhotoRequest, opts ...grpc.CallOption) (*UploadPhotoResponse, error)
+	ListAllIngredientsAtHome(ctx context.Context, opts ...grpc.CallOption) (RecipesService_ListAllIngredientsAtHomeClient, error)
 	// Bidirectional-streaming
 	GetIngredientsForAllRecipes(ctx context.Context, in *GetIngredientsRequest, opts ...grpc.CallOption) (*GetIngredientsResponse, error)
 }
@@ -770,13 +839,38 @@ func (x *recipesServiceListAllRecipesClient) Recv() (*ListAllRecipesResponse, er
 	return m, nil
 }
 
-func (c *recipesServiceClient) UploadPhoto(ctx context.Context, in *UploadPhotoRequest, opts ...grpc.CallOption) (*UploadPhotoResponse, error) {
-	out := new(UploadPhotoResponse)
-	err := c.cc.Invoke(ctx, "/recipes.RecipesService/UploadPhoto", in, out, opts...)
+func (c *recipesServiceClient) ListAllIngredientsAtHome(ctx context.Context, opts ...grpc.CallOption) (RecipesService_ListAllIngredientsAtHomeClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_RecipesService_serviceDesc.Streams[1], "/recipes.RecipesService/ListAllIngredientsAtHome", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &recipesServiceListAllIngredientsAtHomeClient{stream}
+	return x, nil
+}
+
+type RecipesService_ListAllIngredientsAtHomeClient interface {
+	Send(*ListAllIngredientsAtHomeRequest) error
+	CloseAndRecv() (*ListAllIngredientsAtHomeResponse, error)
+	grpc.ClientStream
+}
+
+type recipesServiceListAllIngredientsAtHomeClient struct {
+	grpc.ClientStream
+}
+
+func (x *recipesServiceListAllIngredientsAtHomeClient) Send(m *ListAllIngredientsAtHomeRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *recipesServiceListAllIngredientsAtHomeClient) CloseAndRecv() (*ListAllIngredientsAtHomeResponse, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(ListAllIngredientsAtHomeResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 func (c *recipesServiceClient) GetIngredientsForAllRecipes(ctx context.Context, in *GetIngredientsRequest, opts ...grpc.CallOption) (*GetIngredientsResponse, error) {
@@ -795,7 +889,7 @@ type RecipesServiceServer interface {
 	// server-streaming
 	ListAllRecipes(*ListAllRecipesRequest, RecipesService_ListAllRecipesServer) error
 	// client-streaming
-	UploadPhoto(context.Context, *UploadPhotoRequest) (*UploadPhotoResponse, error)
+	ListAllIngredientsAtHome(RecipesService_ListAllIngredientsAtHomeServer) error
 	// Bidirectional-streaming
 	GetIngredientsForAllRecipes(context.Context, *GetIngredientsRequest) (*GetIngredientsResponse, error)
 }
@@ -810,8 +904,8 @@ func (*UnimplementedRecipesServiceServer) AddRecipe(context.Context, *AddRecipeR
 func (*UnimplementedRecipesServiceServer) ListAllRecipes(*ListAllRecipesRequest, RecipesService_ListAllRecipesServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListAllRecipes not implemented")
 }
-func (*UnimplementedRecipesServiceServer) UploadPhoto(context.Context, *UploadPhotoRequest) (*UploadPhotoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UploadPhoto not implemented")
+func (*UnimplementedRecipesServiceServer) ListAllIngredientsAtHome(RecipesService_ListAllIngredientsAtHomeServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListAllIngredientsAtHome not implemented")
 }
 func (*UnimplementedRecipesServiceServer) GetIngredientsForAllRecipes(context.Context, *GetIngredientsRequest) (*GetIngredientsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIngredientsForAllRecipes not implemented")
@@ -860,22 +954,30 @@ func (x *recipesServiceListAllRecipesServer) Send(m *ListAllRecipesResponse) err
 	return x.ServerStream.SendMsg(m)
 }
 
-func _RecipesService_UploadPhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadPhotoRequest)
-	if err := dec(in); err != nil {
+func _RecipesService_ListAllIngredientsAtHome_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(RecipesServiceServer).ListAllIngredientsAtHome(&recipesServiceListAllIngredientsAtHomeServer{stream})
+}
+
+type RecipesService_ListAllIngredientsAtHomeServer interface {
+	SendAndClose(*ListAllIngredientsAtHomeResponse) error
+	Recv() (*ListAllIngredientsAtHomeRequest, error)
+	grpc.ServerStream
+}
+
+type recipesServiceListAllIngredientsAtHomeServer struct {
+	grpc.ServerStream
+}
+
+func (x *recipesServiceListAllIngredientsAtHomeServer) SendAndClose(m *ListAllIngredientsAtHomeResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *recipesServiceListAllIngredientsAtHomeServer) Recv() (*ListAllIngredientsAtHomeRequest, error) {
+	m := new(ListAllIngredientsAtHomeRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
-	if interceptor == nil {
-		return srv.(RecipesServiceServer).UploadPhoto(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/recipes.RecipesService/UploadPhoto",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecipesServiceServer).UploadPhoto(ctx, req.(*UploadPhotoRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	return m, nil
 }
 
 func _RecipesService_GetIngredientsForAllRecipes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -905,10 +1007,6 @@ var _RecipesService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _RecipesService_AddRecipe_Handler,
 		},
 		{
-			MethodName: "UploadPhoto",
-			Handler:    _RecipesService_UploadPhoto_Handler,
-		},
-		{
 			MethodName: "GetIngredientsForAllRecipes",
 			Handler:    _RecipesService_GetIngredientsForAllRecipes_Handler,
 		},
@@ -918,6 +1016,11 @@ var _RecipesService_serviceDesc = grpc.ServiceDesc{
 			StreamName:    "ListAllRecipes",
 			Handler:       _RecipesService_ListAllRecipes_Handler,
 			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListAllIngredientsAtHome",
+			Handler:       _RecipesService_ListAllIngredientsAtHome_Handler,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "defs/recipes-service.proto",

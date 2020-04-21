@@ -3,6 +3,7 @@ package main
 import (
 	"home-recipes/server/recipes/data"
 	"home-recipes/server/recipes/generated"
+	"io"
 	"log"
 	"net"
 
@@ -29,12 +30,20 @@ func (s *server) ListAllRecipes(req *generated.ListAllRecipesRequest, stream gen
 	return nil
 }
 
-func (s *server) UploadPhoto(ctx context.Context, req *generated.UploadPhotoRequest) (*generated.UploadPhotoResponse, error) {
-	log.Printf("Received request for UploadPhoto with data: photo_name = %v, photo_type = %v", req.GetPhotoName(), req.GetPhotoType())
+func (s *server) ListAllIngredientsAtHome(stream generated.RecipesService_ListAllIngredientsAtHomeServer) error {
+	log.Printf("Noting all the ingredients that you have at home:")
 
-	// do something smart with this picture that you just received!
+	for {
+		data, err := stream.Recv()
+		if err == io.EOF {
+			return stream.SendAndClose((&generated.ListAllIngredientsAtHomeResponse{Success: true}))
+		}
+		if err != nil {
+			return err
+		}
 
-	return &generated.UploadPhotoResponse{Yayy: "Booyaaa!"}, nil
+		log.Printf("You have %v quantity of %v", data.GetIngredient().GetQuantity(), data.GetIngredient().GetName())
+	}
 }
 
 func (s *server) GetIngredientsForAllRecipes(ctx context.Context, req *generated.GetIngredientsRequest) (*generated.GetIngredientsResponse, error) {

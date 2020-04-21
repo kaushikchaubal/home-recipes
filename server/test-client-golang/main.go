@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"home-recipes/server/test-client-golang/data"
 	"home-recipes/server/test-client-golang/recipes/generated"
 	"io"
 	"log"
@@ -27,43 +28,62 @@ func main() {
 	defer cancel()
 
 	// Testing AddRecipe method
-	newRecipe := &generated.Recipe{Name: "Sushi", Cuisine: "Japanese"}
+	{
+		newRecipe := &generated.Recipe{Name: "Sushi", Cuisine: "Japanese"}
 
-	response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{Recipe: newRecipe})
-	if err != nil {
-		log.Fatalf("Error: %v", err)
+		response, err := c.AddRecipe(ctx, &generated.AddRecipeRequest{Recipe: newRecipe})
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+		log.Printf("Response received for AddRecipe %s", response)
 	}
-	log.Printf("Response received for AddRecipe %s", response)
 
 	// Testing ListAllRecipes method
-	stream, err := c.ListAllRecipes(ctx, &generated.ListAllRecipesRequest{})
-	if err != nil {
-		log.Fatalf("Error: %v", err)
-	}
-
-	for {
-		response, err := stream.Recv()
-		if err == io.EOF {
-			break
-		}
+	{
+		stream, err := c.ListAllRecipes(ctx, &generated.ListAllRecipesRequest{})
 		if err != nil {
-			log.Fatal(err)
+			log.Fatalf("Error: %v", err)
 		}
 
-		log.Printf("Response received for ListAllRecipes: %s", response)
+		for {
+			response, err := stream.Recv()
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			log.Printf("Response received for ListAllRecipes: %s", response)
+		}
 	}
 
-	// Testing UploadPhoto method
-	thirdResponse, err := c.UploadPhoto(ctx, &generated.UploadPhotoRequest{PhotoName: "Kavee.jpg", PhotoType: "jpg"})
-	if err != nil {
-		log.Fatalf("Error: %v", err)
+	// Testing ListAllIngredientsAtHome method
+	{
+		stream, err := c.ListAllIngredientsAtHome(ctx)
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+
+		for _, ingredient := range data.Ingredients {
+			stream.Send(&generated.ListAllIngredientsAtHomeRequest{Ingredient: &ingredient})
+		}
+
+		response, err := stream.CloseAndRecv()
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+
+		log.Printf("Response received for ListAllIngredientsAtHome: %s", response)
 	}
-	log.Printf("Response received for UploadPhoto: %s", thirdResponse)
 
 	// Testing GetIngredientsForAllRecipes method
-	fourthResponse, err := c.GetIngredientsForAllRecipes(ctx, &generated.GetIngredientsRequest{RecipeName: "Bread"})
-	if err != nil {
-		log.Fatalf("Error: %v", err)
+	{
+		response, err := c.GetIngredientsForAllRecipes(ctx, &generated.GetIngredientsRequest{RecipeName: "Bread"})
+		if err != nil {
+			log.Fatalf("Error: %v", err)
+		}
+		log.Printf("Response received for GetIngredientsForAllRecipes: %s", response)
 	}
-	log.Printf("Response received for GetIngredientsForAllRecipes: %s", fourthResponse)
+
 }

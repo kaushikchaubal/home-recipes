@@ -14,26 +14,60 @@ function main() {
     const client = new recipes.RecipesService(SERVER_ADDR, grpc.credentials.createInsecure());
 
     // Testing addRecipe method
-    var newRecipe = {
-        name: "Samosa",
-        cuisine: "Indian"
+    {
+        var newRecipe = {
+            name: "Samosa",
+            cuisine: "Indian"
+        }
+    
+        client.addRecipe({recipe: newRecipe}, function(error, response) {
+            if(error) {
+                console.log(error);
+                return;
+            }
+    
+            console.log(response);
+        });
+    }
+    
+
+    // Testing listAllRecipes method
+    {
+        const call = client.listAllRecipes({});
+
+        call.on('data', function (data) {
+            console.log(data.recipe);
+        });
     }
 
-    client.addRecipe({recipe: newRecipe}, function(error, response) {
-        if(error) {
-            console.log(error);
-            return;
-        }
+    // Testing listAllIngredientsAtHome method
+    {
+        var ingredients = [
+            {
+                name: "rice",
+                quantity: "5 kgs"
+            },
+            {
+                name: "sugar",
+                quantity: "500 gms"
+            },
+            {
+                name: "bananas",
+                quantity: "4"
+            }
+        ]
 
-        console.log(response);
-    });
+        const call = client.listAllIngredientsAtHome({}, function(err, result) {
+            console.log(result);
+        });
 
-     // Testing listAllRecipes method
-    const call = client.listAllRecipes({});
-
-    call.on('data', function (data) {
-        console.log(data.recipe);
-    });
+        ingredients.forEach(function (item, index) {
+            call.write({ingredient: item});
+          });
+        
+        call.end();
+    }
+    
 
 }
 
