@@ -13,7 +13,7 @@ const recipes = grpc.loadPackageDefinition(packageDefinition).recipes;
 function main() {
     const client = new recipes.RecipesService(SERVER_ADDR, grpc.credentials.createInsecure());
 
-    // Testing AddRecipe method
+    // Testing addRecipe method
     var newRecipe = {
         name: "Samosa",
         cuisine: "Indian"
@@ -27,6 +27,14 @@ function main() {
 
         console.log(response);
     });
+
+     // Testing listAllRecipes method
+    const call = client.listAllRecipes({});
+
+    call.on('data', function (data) {
+        console.log(data.recipe);
+    });
+
 }
 
 main();
