@@ -45,4 +45,11 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 	log.Printf("Response received for UploadPhoto: %s", thirdResponse)
+
+	// Testing GetIngredientsForAllRecipes method
+	fourthResponse, err := c.GetIngredientsForAllRecipes(ctx, &generated.GetIngredientsRequest{RecipeName: "Bread"})
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
+	log.Printf("Response received for GetIngredientsForAllRecipes: %s", fourthResponse)
 }

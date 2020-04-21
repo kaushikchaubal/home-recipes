@@ -31,6 +31,11 @@ func (s *server) UploadPhoto(ctx context.Context, req *generated.UploadPhotoRequ
 	return &generated.UploadPhotoResponse{Yayy: "Booyaaa!"}, nil
 }
 
+func (s *server) GetIngredientsForAllRecipes(ctx context.Context, req *generated.GetIngredientsRequest) (*generated.GetIngredientsResponse, error) {
+	log.Printf("Received request for GetIngredientsForAllRecipes: recipe_name = %v", req.GetRecipeName())
+	return &generated.GetIngredientsResponse{IngredientName: "Flour"}, nil
+}
+
 func main() {
 	listener, err := net.Listen("tcp", port)
 
