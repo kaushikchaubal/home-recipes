@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package recipes;
+
+option go_package = "recipes/generated";
+
+message AddRecipeRequest {
+    string recipe_name = 1;
+}
+
+message AddRecipeResponse {
+    bool success = 1;
+}
+
+service RecipesService {
+    // unary
+    rpc AddRecipe (AddRecipeRequest) returns (AddRecipeResponse);
+}
