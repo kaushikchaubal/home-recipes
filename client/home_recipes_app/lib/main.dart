@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'AddRecipeRoute.dart';
 import 'ShowAllRecipesRoute.dart';
-import 'ListIngredientsInKitechen.dart';
+import 'ListIngredientsInKitchenRoute.dart';
 import 'GetIngredientsForRecipes.dart';
 
 void main() => runApp(HomeRecipesApp());
@@ -84,7 +84,7 @@ class HomePageRoute extends StatelessWidget {
               createFlatButton(
                   'List ingredients in your kitchen',
                   Icon(Icons.kitchen, color: Colors.teal),
-                    () => Navigator.push(context,MaterialPageRoute(builder: (context) => ListIngredientsInKitchen())),
+                    () => Navigator.push(context,MaterialPageRoute(builder: (context) => ListIngredientsInKitchenRoute())),
               ),
               createFlatButton(
                   'Get ingredients for recipes',
