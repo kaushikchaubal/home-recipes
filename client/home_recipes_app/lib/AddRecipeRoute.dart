@@ -44,7 +44,7 @@ class _AddRecipeState extends State<AddRecipeRoute> {
             hintText: 'Enter Recipe Name'
         ),
         onSaved: (String value) {
-          _formData['recipeName'] = value;
+          _formData['recipeName'] = value.trim();
         },
       ),
     );
@@ -59,33 +59,39 @@ class _AddRecipeState extends State<AddRecipeRoute> {
             hintText: 'Enter Recipe Cuisine'
         ),
         onSaved: (String value) {
-          _formData['recipeCuisine'] = value;
+          _formData['recipeCuisine'] = value.trim();
         },
       ),
     );
   }
 
   Widget _buildSubmitButton() {
-    return FlatButton(
-      onPressed: () {
-        _submitForm();
-        FocusScope.of(context).unfocus();
-      },
-      child: Card(
-          margin: EdgeInsets.only(top: 20.0, bottom: 10.0),
-          color: Colors.teal,
-          child: ListTile(
-            title: Center(
-              child: Text(
-                'Add recipe to database',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Source Sans Pro',
-                  fontSize: 20.0,
+    return Builder(
+      builder: (context) => FlatButton(
+        onPressed: () {
+          _submitForm();
+          FocusScope.of(context).unfocus();
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('New recipe added! You are awesome!'),
+            backgroundColor: Colors.teal.shade500,
+          ));
+        },
+        child: Card(
+            margin: EdgeInsets.only(top: 20.0, bottom: 10.0),
+            color: Colors.teal,
+            child: ListTile(
+              title: Center(
+                child: Text(
+                  'Add recipe to database',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Source Sans Pro',
+                    fontSize: 20.0,
+                  ),
                 ),
               ),
-            ),
-          )),
+            )),
+      ),
     );
   }
 
