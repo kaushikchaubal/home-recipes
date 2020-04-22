@@ -46,6 +46,7 @@ class Recipe {
   Recipe({this.recipeName, this.recipeCuisine, this.likes});
 }
 
+// Currently hardcoded list of recipes on the client. This will be streamed by the server
 var recipes = <Recipe>[
   Recipe(recipeName: "Pizza", recipeCuisine: "Italian", likes: 3),
   Recipe(recipeName: "Beef Burgers", recipeCuisine: "American", likes: 3),

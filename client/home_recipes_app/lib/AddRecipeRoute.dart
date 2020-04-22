@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AddRecipeRoute extends StatefulWidget {
-  AddRecipeRoute({Key key}) : super(key: key);
 
   @override
   _AddRecipeState createState() => _AddRecipeState();
