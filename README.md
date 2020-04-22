@@ -14,4 +14,5 @@ The architecture, API, UI design details are available on this miro board: https
 
 ## Screenshot
 This is how the app looks like as of now. This is available as an Android as well as an iOS app.
+
 ![home-recipes.png](home-recipes.png)
