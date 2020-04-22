@@ -1,7 +1,7 @@
 ## Must
 - [x] Write documentation for steps followed to create this project
 - [x] Add test client for Node
-- [ ] Run flutter app as a web-app
+- [ ] Run flutter app as a web-appgpus
 
 ## Should
 - [ ] Write documentation for other devs to follow to clone & run

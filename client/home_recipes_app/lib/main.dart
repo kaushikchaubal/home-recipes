@@ -44,6 +44,9 @@ class HomeRecipesApp extends StatelessWidget {
                   ),
                 ),
                 FlatButton(
+                  onPressed: () {
+                    print("First button pressed!");
+                  },
                   child: Card(
                       margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: ListTile(
@@ -62,6 +65,9 @@ class HomeRecipesApp extends StatelessWidget {
                       )),
                 ),
                 FlatButton(
+                  onPressed: () {
+                    print("Second button pressed!");
+                  },
                   child: Card(
                       margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: ListTile(
@@ -79,6 +85,9 @@ class HomeRecipesApp extends StatelessWidget {
                       )),
                 ),
                 FlatButton(
+                  onPressed: () {
+                    print("Third button pressed!");
+                  },
                   child: Card(
                       margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: ListTile(
@@ -98,6 +107,9 @@ class HomeRecipesApp extends StatelessWidget {
               ],
             )),
         floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print("Floating button pressed!");
+          },
           tooltip: 'Add Recipe',
           backgroundColor: Colors.white,
           child: Icon(
