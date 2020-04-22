@@ -1,6 +1,7 @@
 # Home Recipes
 
-A simple full-stack app that uses a power-packed tech stack. Technologies used so far include:
+## Background
+A simple full-stack app that uses multiple technologies to make it cross-platform, fast, efficient and cloud-native. Here is a list of technologies used for this project:
 * gRPC
 * Golang
 * Protobufs 
