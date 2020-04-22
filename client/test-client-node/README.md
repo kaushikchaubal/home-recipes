@@ -17,5 +17,5 @@
 5. Run the client
     ```
     cd home-recipes
-    node server/test-client-node/app.js 
+    node client/test-client-node/app.js 
     ```

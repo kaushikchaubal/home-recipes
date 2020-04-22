@@ -1,6 +1,6 @@
 package data
 
-import "home-recipes/server/test-client-golang/recipes/generated"
+import "home-recipes/client/test-client-golang/recipes/generated"
 
 // Ingredients - Mock data of all the recipes to return for ListAllRecipes endpoint
 var Ingredients = []generated.Ingredient{

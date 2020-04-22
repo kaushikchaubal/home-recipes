@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"home-recipes/server/test-client-golang/data"
-	"home-recipes/server/test-client-golang/recipes/generated"
+	"home-recipes/client/test-client-golang/data"
+	"home-recipes/client/test-client-golang/recipes/generated"
 	"io"
 	"log"
 	"time"
