@@ -91,6 +91,14 @@ class HomeRecipesApp extends StatelessWidget {
                     ))
               ],
             )),
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Add Recipe',
+          backgroundColor: Colors.white,
+          child: Icon(
+              Icons.add,
+              color: Colors.teal,
+          ),
+        ),
       ),
     );
   }
