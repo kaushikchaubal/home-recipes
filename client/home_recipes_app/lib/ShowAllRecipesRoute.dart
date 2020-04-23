@@ -38,31 +38,31 @@ class _ShowAllRecipesState extends State<ShowAllRecipesRoute> {
   }
 }
 
-class Recipe {
+class ClientRecipe {
   String recipeName;
   String recipeCuisine;
   int likes;
 
-  Recipe({this.recipeName, this.recipeCuisine, this.likes});
+  ClientRecipe({this.recipeName, this.recipeCuisine, this.likes});
 }
 
 // Currently hardcoded list of recipes on the client. This will be streamed by the server
-var recipes = <Recipe>[
-  Recipe(recipeName: "Pizza", recipeCuisine: "Italian", likes: 3),
-  Recipe(recipeName: "Beef Burgers", recipeCuisine: "American", likes: 3),
-  Recipe(recipeName: "Croissants", recipeCuisine: "French", likes: 3),
-  Recipe(recipeName: "Katsu Curry", recipeCuisine: "Japanese", likes: 3),
-  Recipe(recipeName: "Butter Chicken", recipeCuisine: "Indian", likes: 3),
-  Recipe(recipeName: "Raviolli", recipeCuisine: "Italian", likes: 3),
-  Recipe(recipeName: "Sunday Roast", recipeCuisine: "British", likes: 3),
-  Recipe(recipeName: "Kebabs", recipeCuisine: "Lebanese", likes: 3),
-  Recipe(recipeName: "Bread", recipeCuisine: "International", likes: 3),
-  Recipe(recipeName: "Duck stir fry", recipeCuisine: "Chinese", likes: 3),
-  Recipe(recipeName: "Ceviche", recipeCuisine: "Peruvian", likes: 3),
-  Recipe(recipeName: "Burritos", recipeCuisine: "Mexican", likes: 3),
-  Recipe(recipeName: "Pho", recipeCuisine: "Vietnamese", likes: 3),
-  Recipe(recipeName: "Dim Sums", recipeCuisine: "Hong Kong", likes: 3),
-  Recipe(recipeName: "Tagines", recipeCuisine: "Moroccon", likes: 3),
-  Recipe(recipeName: "Fish and chips", recipeCuisine: "British", likes: 3),
+var recipes = <ClientRecipe>[
+  ClientRecipe(recipeName: "Pizza", recipeCuisine: "Italian", likes: 3),
+  ClientRecipe(recipeName: "Beef Burgers", recipeCuisine: "American", likes: 3),
+  ClientRecipe(recipeName: "Croissants", recipeCuisine: "French", likes: 3),
+  ClientRecipe(recipeName: "Katsu Curry", recipeCuisine: "Japanese", likes: 3),
+  ClientRecipe(recipeName: "Butter Chicken", recipeCuisine: "Indian", likes: 3),
+  ClientRecipe(recipeName: "Raviolli", recipeCuisine: "Italian", likes: 3),
+  ClientRecipe(recipeName: "Sunday Roast", recipeCuisine: "British", likes: 3),
+  ClientRecipe(recipeName: "Kebabs", recipeCuisine: "Lebanese", likes: 3),
+  ClientRecipe(recipeName: "Bread", recipeCuisine: "International", likes: 3),
+  ClientRecipe(recipeName: "Duck stir fry", recipeCuisine: "Chinese", likes: 3),
+  ClientRecipe(recipeName: "Ceviche", recipeCuisine: "Peruvian", likes: 3),
+  ClientRecipe(recipeName: "Burritos", recipeCuisine: "Mexican", likes: 3),
+  ClientRecipe(recipeName: "Pho", recipeCuisine: "Vietnamese", likes: 3),
+  ClientRecipe(recipeName: "Dim Sums", recipeCuisine: "Hong Kong", likes: 3),
+  ClientRecipe(recipeName: "Tagines", recipeCuisine: "Moroccon", likes: 3),
+  ClientRecipe(recipeName: "Fish and chips", recipeCuisine: "British", likes: 3),
 
 ];

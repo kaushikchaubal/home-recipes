@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homerecipes/api/RecipesService.dart';
 
 class AddRecipeRoute extends StatefulWidget {
 
@@ -97,7 +98,8 @@ class _AddRecipeState extends State<AddRecipeRoute> {
   void _submitForm() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print(_formData);
+      print('Adding recipe with values: $_formData');
+      RecipesService.addRecipe(_formData['recipeName'], _formData['recipeCuisine']);
     }
   }
 }

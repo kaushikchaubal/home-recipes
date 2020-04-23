@@ -43,56 +43,63 @@ class HomePageRoute extends StatelessWidget {
       backgroundColor: Colors.teal,
       body: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CircleAvatar(
-                radius: 50.0,
-                backgroundImage: AssetImage('images/main-icon.png'),
-                backgroundColor: Colors.white,
-              ),
-              Text(
-                'Home Recipes',
-                style: TextStyle(
-                  fontFamily: 'Pacifico',
-                  fontSize: 40.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'COOKING. SHARING. THRIVING.',
-                style: TextStyle(
-                  fontFamily: 'Source Sans Pro',
-                  color: Colors.teal.shade100,
-                  fontSize: 20.0,
-                  letterSpacing: 2.5,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-                width: 150.0,
-                child: Divider(
-                  color: Colors.teal.shade100,
-                ),
-              ),
-              createFlatButton(
-                  'Show all the recipes available',
-                  Icon(Icons.fastfood, color: Colors.teal),
-                  () => Navigator.push(context,MaterialPageRoute(builder: (context) => ShowAllRecipesRoute())),
-              ),
-              createFlatButton(
-                  'List ingredients in your kitchen',
-                  Icon(Icons.kitchen, color: Colors.teal),
-                    () => Navigator.push(context,MaterialPageRoute(builder: (context) => ListIngredientsInKitchenRoute())),
-              ),
-              createFlatButton(
-                  'Get ingredients for recipes',
-                  Icon(Icons.cake, color: Colors.teal),
-                    () => Navigator.push(context,MaterialPageRoute(builder: (context) => GetIngredientsForRecipes())),
-              ),
-            ],
-          )),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          CircleAvatar(
+            radius: 50.0,
+            backgroundImage: AssetImage('images/main-icon.png'),
+            backgroundColor: Colors.white,
+          ),
+          Text(
+            'Home Recipes',
+            style: TextStyle(
+              fontFamily: 'Pacifico',
+              fontSize: 40.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'COOKING. SHARING. THRIVING.',
+            style: TextStyle(
+              fontFamily: 'Source Sans Pro',
+              color: Colors.teal.shade100,
+              fontSize: 20.0,
+              letterSpacing: 2.5,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 20.0,
+            width: 150.0,
+            child: Divider(
+              color: Colors.teal.shade100,
+            ),
+          ),
+          createFlatButton(
+            'Show all the recipes available',
+            Icon(Icons.fastfood, color: Colors.teal),
+            () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ShowAllRecipesRoute())),
+          ),
+          createFlatButton(
+            'List ingredients in your kitchen',
+            Icon(Icons.kitchen, color: Colors.teal),
+            () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ListIngredientsInKitchenRoute())),
+          ),
+          createFlatButton(
+            'Get ingredients for recipes',
+            Icon(Icons.cake, color: Colors.teal),
+            () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => GetIngredientsForRecipes())),
+          ),
+        ],
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(context,MaterialPageRoute(builder: (context) => AddRecipeRoute())),
         tooltip: 'Add Recipe',
@@ -104,6 +111,6 @@ class HomePageRoute extends StatelessWidget {
       ),
     );
   }
+
+
 }
-
-
