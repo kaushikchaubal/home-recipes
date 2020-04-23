@@ -74,10 +74,12 @@ var Recipes = []generated.Recipe{
 func RecipeToIngredientsMap() map[string][]generated.Ingredient {
 	recipeToIngredientsMap := make(map[string][]generated.Ingredient)
 	recipeToIngredientsMap["Bread"] = []generated.Ingredient{
+		{Name: "recipe:Bread", Quantity: ""},
 		{Name: "Flour", Quantity: "10kg"},
 		{Name: "Yeast", Quantity: "1 packet"},
 	}
 	recipeToIngredientsMap["Nachos"] = []generated.Ingredient{
+		{Name: "recipe:Nachos", Quantity: ""},
 		{Name: "Tortilla chips", Quantity: "1 packett"},
 		{Name: "Sour cream", Quantity: "1 packet"},
 		{Name: "Cheese", Quantity: "200 gms"},

@@ -75,7 +75,7 @@ class RecipesService {
     await channel.shutdown();
   }
 
-  static void getIngredientsForAllRecipes(StreamController<GetIngredientsForAllRecipesResponse> streamController) async {
+  static void getIngredientsForAllRecipes(int selectedIndex, StreamController<GetIngredientsForAllRecipesResponse> streamController) async {
     print('Calling getIngredientsForAllRecipes endpoint');
 
     // Create connection to start communication
@@ -86,31 +86,15 @@ class RecipesService {
     );
     final stub = RecipesServiceClient(channel);
 
-    // Stub to create multiple requests
-    GetIngredientsForAllRecipesRequest createRequest(
-        String recipeName, String recipeCuisine) {
-      var recipeToAdd = Recipe();
-      recipeToAdd.name = recipeName;
-      recipeToAdd.cuisine = recipeCuisine;
 
-      var request = GetIngredientsForAllRecipesRequest();
-      request.recipe = recipeToAdd;
-
-      return request;
-    }
-
-    // Create list of requests
-    final requestList = <GetIngredientsForAllRecipesRequest>[
-      createRequest('Croissants', 'French'),
-      createRequest('Chicken pasta bake', 'Italian'),
-      createRequest('Roast salmon with preserved lemon', 'British'),
-    ];
+    // Create list of requests (based on selected tab)
+    var requestList = getRequestList(selectedIndex);
 
     // Stub to convert requests to streams
     Stream<GetIngredientsForAllRecipesRequest> outgoingRequests() async* {
       for (final request in requestList) {
         // Short delay to simulate some other interaction.
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(Duration(milliseconds: 10));
         yield request;
       }
     }
@@ -125,5 +109,38 @@ class RecipesService {
     }
 
     await channel.shutdown();
+  }
+
+  static List<GetIngredientsForAllRecipesRequest> getRequestList(int selectedIndex) {
+    // Stub to create multiple requests
+    GetIngredientsForAllRecipesRequest createRequest(
+        String recipeName, String recipeCuisine) {
+      var recipeToAdd = Recipe();
+      recipeToAdd.name = recipeName;
+      recipeToAdd.cuisine = recipeCuisine;
+
+      var request = GetIngredientsForAllRecipesRequest();
+      request.recipe = recipeToAdd;
+
+      return request;
+    }
+
+    if (selectedIndex == 0) {
+      return <GetIngredientsForAllRecipesRequest>[
+        createRequest('Croissants', ''),
+        createRequest('Chicken pasta bake', ''),
+        createRequest('Roast salmon with preserved lemon', ''),
+      ];
+    } else if (selectedIndex == 1) {
+      return <GetIngredientsForAllRecipesRequest>[
+        createRequest('Nachos', ''),
+        createRequest('Croissants', ''),
+      ];
+    } else {
+      return <GetIngredientsForAllRecipesRequest>[
+        createRequest('Bread', ''),
+        createRequest('Roast salmon with preserved lemon', ''),
+      ];
+    }
   }
 }

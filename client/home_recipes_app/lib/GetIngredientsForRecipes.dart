@@ -15,10 +15,11 @@ class _GetIngredientsForRecipesState extends State<GetIngredientsForRecipes> {
 
   final List<Widget> titleAndIngredientsList = [];
 
-  @override
-  void initState() {
+  void getDataFromServer() {
+    titleAndIngredientsList.clear();
+
     var streamController = new StreamController<GetIngredientsForAllRecipesResponse>();
-    RecipesService.getIngredientsForAllRecipes(streamController);
+    RecipesService.getIngredientsForAllRecipes(_selectedIndex, streamController);
 
     streamController.stream.listen((data) {
       final name = data.ingredient.name;
@@ -30,16 +31,21 @@ class _GetIngredientsForRecipesState extends State<GetIngredientsForRecipes> {
         } else {
           titleAndIngredientsList.add(_ingredientItem(name));
         }
-
       });
-
     });
+  }
+
+  @override
+  void initState() {
+    getDataFromServer();
   }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+
+    getDataFromServer();
   }
 
   @override
