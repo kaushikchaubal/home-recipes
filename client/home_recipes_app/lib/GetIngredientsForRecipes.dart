@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:homerecipes/api/RecipesService.dart';
+import 'package:homerecipes/generated/defs/recipes-service.pb.dart';
 
 class GetIngredientsForRecipes extends StatefulWidget {
   @override
@@ -8,6 +12,30 @@ class GetIngredientsForRecipes extends StatefulWidget {
 
 class _GetIngredientsForRecipesState extends State<GetIngredientsForRecipes> {
   int _selectedIndex = 0;
+
+  final List<Widget> titleAndIngredientsList = [];
+
+  @override
+  void initState() {
+    var streamController = new StreamController<GetIngredientsForAllRecipesResponse>();
+    RecipesService.getIngredientsForAllRecipes(streamController);
+
+    streamController.stream.listen((data) {
+      final name = data.ingredient.name;
+      final quantity = data.ingredient.quantity;
+
+      setState(() {
+        if(name.contains('recipe:')) {
+          String recipeTitle = name.substring(name.indexOf(':') + 1);
+          titleAndIngredientsList.add(_ingredientTitle(recipeTitle));
+        } else {
+          titleAndIngredientsList.add(_ingredientItem(name));
+        }
+
+      });
+
+    });
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -23,40 +51,9 @@ class _GetIngredientsForRecipesState extends State<GetIngredientsForRecipes> {
         backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
-          child: Column(children: <Widget>[
-        _ingredientTitle('Croissants'),
-        _ingredientItem('500g strong white flour, plus extra for dusting'),
-        _ingredientItem('1½ tsp salt'),
-        _ingredientItem('50g sugar'),
-        _ingredientItem('2 x 7g sachets fast-action dried yeast'),
-        _ingredientItem('oil, for greasing'),
-        _ingredientItem('300g butter, at room temperature'),
-        _ingredientItem('1 egg, beaten'),
-        _ingredientTitle('Chicken pasta bake'),
-        _ingredientItem('4 tbsp olive oil'),
-        _ingredientItem('1 onion, finely chopped'),
-        _ingredientItem('2 garlic cloves, crushed'),
-        _ingredientItem('¼ tsp chilli flakes'),
-        _ingredientItem('2 x 400g cans chopped tomatoes'),
-        _ingredientItem('1 tsp caster sugar'),
-        _ingredientItem('6 tbsp mascarpone'),
-        _ingredientItem('4 skinless chicken breasts, sliced into strips'),
-        _ingredientItem('300g penne'),
-        _ingredientItem('70g mature cheddar, grated'),
-        _ingredientItem('50g grated mozzarella'),
-        _ingredientItem('½ small bunch of parsley, finely chopped'),
-        _ingredientTitle('Roast salmon with preserved lemon'),
-        _ingredientItem('40g preserved lemon, flesh and pith removed'),
-        _ingredientItem('100ml gin'),
-        _ingredientItem('1kg side organic farmed or wild salmon (tail end)'),
-        _ingredientItem('50g sea salt'),
-        _ingredientItem('50g golden caster sugar'),
-        _ingredientItem('1 tsp thyme leaves'),
-        _ingredientItem('1 tsp chilli flakes'),
-        _ingredientItem('½ small bunch dill, washed'),
-        _ingredientItem('30g preserved lemons, seeds removed'),
-        _ingredientItem('4 tbsp olive oil'),
-      ])),
+          child: Column(
+              children: titleAndIngredientsList
+          )),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
