@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homerecipes/api/RecipesService.dart';
 
 class ShowAllRecipesRoute extends StatefulWidget {
   @override
@@ -9,6 +10,9 @@ class _ShowAllRecipesState extends State<ShowAllRecipesRoute> {
 
   @override
   Widget build(BuildContext context) {
+
+    RecipesService.listAllRecipes();
+
     return Scaffold(
         appBar: AppBar(
           title: Text('All available recipes'),

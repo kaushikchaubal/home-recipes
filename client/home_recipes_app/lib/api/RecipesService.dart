@@ -26,4 +26,26 @@ class RecipesService {
 
     await channel.shutdown();
   }
+
+  static void listAllRecipes() async {
+    print('Calling listAllRecipes endpoint');
+
+    final channel = ClientChannel(
+      '10.0.2.2',
+      port: 50000,
+      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+    );
+
+    final stub = RecipesServiceClient(channel);
+
+    try {
+      await for (var response in stub.listAllRecipes(ListAllRecipesRequest())) {
+        print(response);
+      }
+    } catch (e) {
+      print('Caught error: $e');
+    }
+
+    await channel.shutdown();
+  }
 }
