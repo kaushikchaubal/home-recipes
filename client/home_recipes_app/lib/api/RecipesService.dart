@@ -110,7 +110,7 @@ class RecipesService {
     Stream<GetIngredientsForAllRecipesRequest> outgoingRequests() async* {
       for (final request in requestList) {
         // Short delay to simulate some other interaction.
-        await Future.delayed(Duration(milliseconds: 10));
+        await Future.delayed(Duration(milliseconds: 200));
         yield request;
       }
     }
@@ -118,7 +118,6 @@ class RecipesService {
     // Make request on connection and add response to the response stream
     try {
       await for (var response in stub.getIngredientsForAllRecipes(outgoingRequests())) {
-        print(response);
         streamController.add(response);
       }
     } catch (e) {

@@ -22,10 +22,9 @@ class _GetIngredientsForRecipesState extends State<GetIngredientsForRecipes> {
 
     streamController.stream.listen((data) {
       final name = data.ingredient.name;
-      final quantity = data.ingredient.quantity;
 
       setState(() {
-        if(name.contains('recipe:')) {
+        if(name.contains('recipe:')) { // This is a hack - to be fixed by improving the data model
           String recipeTitle = name.substring(name.indexOf(':') + 1);
           titleAndIngredientsList.add(_ingredientTitle(recipeTitle));
         } else {
@@ -105,31 +104,6 @@ class _GetIngredientsForRecipesState extends State<GetIngredientsForRecipes> {
       myTitle,
       style: TextStyle(
           color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.bold),
-    );
-  }
-
-  // TODO - fixme later
-  List<Widget> _mainWidgetOptions = <Widget>[
-    _getNewlyAdded(),
-    _getTrendingHigh(),
-    _getChefsSpecials(),
-  ];
-
-  static Widget _getNewlyAdded() {
-    return Text(
-      '1. Implement me',
-    );
-  }
-
-  static Widget _getTrendingHigh() {
-    return Text(
-      '2. Implement me',
-    );
-  }
-
-  static Widget _getChefsSpecials() {
-    return Text(
-      '3. Implement me',
     );
   }
 }
