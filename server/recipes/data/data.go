@@ -5,16 +5,68 @@ import "home-recipes/server/recipes/generated"
 // Recipes - Mock data of all the recipes to return for ListAllRecipes endpoint
 var Recipes = []generated.Recipe{
 	{
-		Name:    "Pasta",
-		Cuisine: "Italian",
+		Name: "Pizza", 
+		Cuisine: "Italian", 
 	},
 	{
-		Name:    "Lamb Machurian",
-		Cuisine: "Chinese",
+		Name: "Beef Burgers", 
+		Cuisine: "American", 
 	},
 	{
-		Name:    "Fish and chips",
-		Cuisine: "British",
+		Name: "Croissants", 
+		Cuisine: "French", 
+	},
+	{
+		Name: "Katsu Curry", 
+		Cuisine: "Japanese", 
+	},
+	{
+		Name: "Butter Chicken", 
+		Cuisine: "Indian", 
+	},
+	{
+		Name: "Raviolli", 
+		Cuisine: "Italian", 
+	},
+	{
+		Name: "Sunday Roast", 
+		Cuisine: "British", 
+	},
+	{
+		Name: "Kebabs", 
+		Cuisine: "Lebanese", 
+	},
+	{
+		Name: "Bread", 
+		Cuisine: "International", 
+	},
+	{
+		Name: "Duck stir fry", 
+		Cuisine: "Chinese", 
+	},
+	{
+		Name: "Ceviche", 
+		Cuisine: "Peruvian", 
+	},
+	{
+		Name: "Burritos", 
+		Cuisine: "Mexican", 
+	},
+	{
+		Name: "Pho", 
+		Cuisine: "Vietnamese", 
+	},
+	{
+		Name: "Dim Sums", 
+		Cuisine: "Hong Kong", 
+	},
+	{
+		Name: "Tagines", 
+		Cuisine: "Moroccon", 
+	},
+	{
+		Name: "Fish and chips", 
+		Cuisine: "British", 
 	},
 }
 
