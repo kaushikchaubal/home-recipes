@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:grpc/grpc.dart';
 import 'package:homerecipes/generated/defs/recipes-service.pbgrpc.dart';
 
@@ -28,7 +30,7 @@ class RecipesService {
     await channel.shutdown();
   }
 
-  static void listAllRecipes() async {
+  static void listAllRecipes(StreamController<ListAllRecipesResponse> streamController) async {
     print('Calling listAllRecipes endpoint');
 
     final channel = ClientChannel(
@@ -41,7 +43,8 @@ class RecipesService {
 
     try {
       await for (var response in stub.listAllRecipes(ListAllRecipesRequest())) {
-        print(response);
+//        print('Add $response to the stream');
+        streamController.add(response);
       }
     } catch (e) {
       print('Caught error: $e');
