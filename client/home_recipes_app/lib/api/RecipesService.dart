@@ -20,6 +20,7 @@ class RecipesService {
 
     try {
       final response = await stub.addRecipe(AddRecipeRequest()..recipe = recipeToAdd);
+      print('Received response from server as $response');
     } catch (e) {
       print('Caught error: $e');
     }
@@ -42,6 +43,27 @@ class RecipesService {
       await for (var response in stub.listAllRecipes(ListAllRecipesRequest())) {
         print(response);
       }
+    } catch (e) {
+      print('Caught error: $e');
+    }
+
+    await channel.shutdown();
+  }
+
+  static void listAllIngredientsAtHome(Stream<ListAllIngredientsAtHomeRequest> request) async {
+    print('Calling listAllIngredientsAtHome endpoint');
+
+    final channel = ClientChannel(
+      '10.0.2.2',
+      port: 50000,
+      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+    );
+
+    final stub = RecipesServiceClient(channel);
+
+    try {
+      final response = await stub.listAllIngredientsAtHome(request);
+      print('Received response from server as $response');
     } catch (e) {
       print('Caught error: $e');
     }
