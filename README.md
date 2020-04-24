@@ -12,6 +12,8 @@ A simple full-stack app that uses multiple technologies to make it cross-platfor
 * Docker
 * Kubernetes
 * Kubernetes dashboard
+* Microsoft Azure
+* Azure Kubernetes Service
 
 ## Design
 The architecture, API, UI design details are available on this miro board: https://miro.com/app/board/o9J_ktw-EKc=/

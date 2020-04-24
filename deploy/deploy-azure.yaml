@@ -1,0 +1,37 @@
+# This yaml was used to start the app on AKS on Azure
+# The external IP address is 104.45.178.90
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: home-recipes-deployment
+spec: 
+  selector: 
+    matchLabels: 
+      app: home-recipes 
+  replicas: 1
+  template: 
+    metadata: 
+      labels: 
+        app: home-recipes 
+    spec: 
+      containers: 
+      - name: home-recipes 
+        image: kaushikchaubal/home-recipes:0.0.1 
+        ports: 
+        - containerPort: 50000 
+--- 
+
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: home-recipes-service
+spec: 
+  selector: 
+    app: home-recipes 
+  ports: 
+  - protocol: TCP 
+    # This is the port that k8s exposes your server on
+    port: 50000 
+    # This is the port that docker exposes your server on
+    targetPort: 50000 
+  type: LoadBalancer 

@@ -8,7 +8,8 @@ class RecipesService {
     print('Calling addRecipe endpoint');
 
     final channel = ClientChannel(
-      '10.0.2.2',
+      //      '10.0.2.2', // localhost via the Android emulator
+      '104.45.178.90', // running on Azure AKS
       port: 50000,
       options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
@@ -35,7 +36,8 @@ class RecipesService {
     print('Calling listAllRecipes endpoint');
 
     final channel = ClientChannel(
-      '10.0.2.2',
+      //      '10.0.2.2', // localhost via the Android emulator
+      '104.45.178.90', // running on Azure AKS
       port: 50000,
       options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
@@ -58,7 +60,8 @@ class RecipesService {
     print('Calling listAllIngredientsAtHome endpoint');
 
     final channel = ClientChannel(
-      '10.0.2.2',
+      //      '10.0.2.2', // localhost via the Android emulator
+      '104.45.178.90', // running on Azure AKS
       port: 50000,
       options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
@@ -80,7 +83,8 @@ class RecipesService {
 
     // Create connection to start communication
     final channel = ClientChannel(
-      '10.0.2.2',
+//      '10.0.2.2', // localhost via the Android emulator
+      '104.45.178.90', // running on Azure AKS
       port: 50000,
       options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );

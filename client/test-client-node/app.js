@@ -2,7 +2,7 @@
 
 const path = require('path')
 const PROTO_PATH = path.join('defs', 'recipes-service.proto')
-const SERVER_ADDR = 'localhost:50000'
+const SERVER_ADDR = '104.45.178.90:50000'
 
 const grpc = require('grpc')
 var protoLoader = require('@grpc/proto-loader');
