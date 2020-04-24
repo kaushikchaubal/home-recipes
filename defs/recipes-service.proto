@@ -60,7 +60,7 @@ service RecipesService {
         option (google.api.http) = {
             post: "/v1/homerecipes/addRecipe"
             body: "*"
-            };
+        };
     }
 
     // server-streaming

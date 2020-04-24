@@ -23,3 +23,15 @@
     ```
     go build -o out/grpc-gateway middleware/main.go && ./out/grpc-gateway
     ```
+
+7. Test by curling the addRecipe endpoint
+    ```
+    curl --location --request POST 'localhost:8080/v1/homerecipes/addRecipe' \
+    --header 'Content-Type: text/plain' \
+    --data-raw '{
+    "recipe": {
+        "name": "Gnochi",
+        "cuisine": "Italian"
+    }
+    }'
+    ```
