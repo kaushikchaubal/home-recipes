@@ -24,7 +24,7 @@
     go build -o out/grpc-gateway middleware/main.go && ./out/grpc-gateway
     ```
 
-7. Test by curling the addRecipe endpoint
+7. Curl the addRecipe endpoint
     ```
     curl --location --request POST 'localhost:8080/v1/homerecipes/addRecipe' \
     --header 'Content-Type: text/plain' \
@@ -34,4 +34,9 @@
         "cuisine": "Italian"
     }
     }'
+    ```
+
+8. Curl the ListAllRecipes endpoint (Note that GRPC-gateway supports server-side streaming)
+    ```
+    curl --location --request GET 'localhost:8080/v1/homerecipes/allRecipes/list'
     ```
