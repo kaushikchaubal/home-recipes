@@ -49,6 +49,11 @@ One of the key motivations to build this app was to experiment with different te
 ### Client deployment
 * Android apk available on thhe releases page: https://github.com/kaushikchaubal/home-recipes/releases/tag/0.0.1
 
+## Architecture
+The final architecture of the designed system is as seen here:
+
+![architecture-diagram.png](architecture-diagram.png)
+
 ## Digital whiteboarding
 * As part of the implementation stage, Miro was used as the digital whiteboard of choice
 * The miro board associated with home-recipes can be found here: https://miro.com/app/board/o9J_ktw-EKc=/ 
