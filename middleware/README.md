@@ -40,3 +40,15 @@
     ```
     curl --location --request GET 'localhost:8080/v1/homerecipes/allRecipes/list'
     ```
+
+9. Curl the ListAllIngredientsAtHome endpoint (Note that this was supporting only 1 message at a time)
+    ```
+    curl --location --request POST 'localhost:8080/v1/homerecipes/allIngredients/post' \
+    --header 'Content-Type: text/plain' \
+    --data-raw '{
+    "ingredient": {
+        "name": "Flour",
+        "quantity": "2 kgs"
+    }
+    }'
+    ```
