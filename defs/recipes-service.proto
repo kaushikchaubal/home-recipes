@@ -79,5 +79,10 @@ service RecipesService {
     }
 
     // Bidirectional-streaming
-    rpc GetIngredientsForAllRecipes (stream GetIngredientsForAllRecipesRequest) returns (stream GetIngredientsForAllRecipesResponse);
+    rpc GetIngredientsForAllRecipes (stream GetIngredientsForAllRecipesRequest) returns (stream GetIngredientsForAllRecipesResponse) {
+        option (google.api.http) = {
+            post: "/v1/homerecipes/getIngredients/all"
+            body: "*"
+        };
+    }
 }

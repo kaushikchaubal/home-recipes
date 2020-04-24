@@ -29,10 +29,10 @@
     curl --location --request POST 'localhost:8080/v1/homerecipes/addRecipe' \
     --header 'Content-Type: text/plain' \
     --data-raw '{
-    "recipe": {
-        "name": "Gnochi",
-        "cuisine": "Italian"
-    }
+        "recipe": {
+            "name": "Gnochi",
+            "cuisine": "Italian"
+        }
     }'
     ```
 
@@ -46,9 +46,21 @@
     curl --location --request POST 'localhost:8080/v1/homerecipes/allIngredients/post' \
     --header 'Content-Type: text/plain' \
     --data-raw '{
-    "ingredient": {
-        "name": "Flour",
-        "quantity": "2 kgs"
-    }
+        "ingredient": {
+            "name": "Flour",
+            "quantity": "2 kgs"
+        }
+    }'
+    ```
+
+10. Curl the GetAllIngredientsForRecipe endpoing (Note that the request can have only one item)
+    ```
+    curl --location --request POST 'localhost:8080/v1/homerecipes/getIngredients/all' \
+    --header 'Content-Type: text/plain' \
+    --data-raw '{
+        "recipe": {
+            "name": "Croissants",
+            "quantity": ""
+        }
     }'
     ```
