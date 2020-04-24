@@ -10,6 +10,8 @@ A simple full-stack app that uses multiple technologies to make it cross-platfor
 * Dart
 * Material design
 * Docker
+* Kubernetes
+* Kubernetes dashboard
 
 ## Design
 The architecture, API, UI design details are available on this miro board: https://miro.com/app/board/o9J_ktw-EKc=/
