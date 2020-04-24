@@ -64,3 +64,13 @@
         }
     }'
     ```
+
+11. Creating a swagger JSON
+    ```
+    protoc -I./defs defs/recipes-service.proto --swagger_out=logtostderr=true:./middleware
+    ```
+
+12. On-startup, you can access the swagger specs on
+    ```
+    http://localhost:8080/swaggerui/
+    ```

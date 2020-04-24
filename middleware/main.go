@@ -11,19 +11,31 @@ import (
 	gw "home-recipes/middleware/recipes/generated"
 )
 
+func serveSwagger(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "middleware/recipes-service.swagger.json")
+}
+
 func run() error {
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
 	// Register gRPC server endpoint
-	// Note: Make sure the gRPC server is running properly and accessible
-	mux := runtime.NewServeMux()
+	rmux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := gw.RegisterRecipesServiceHandlerFromEndpoint(ctx, mux, "localhost:50000", opts)
+	err := gw.RegisterRecipesServiceHandlerFromEndpoint(ctx, rmux, "localhost:50000", opts)
 	if err != nil {
 		return err
 	}
+
+	// Serve the swagger JSON file
+	mux := http.NewServeMux()
+	mux.Handle("/", rmux)
+	mux.HandleFunc("/swagger.json", serveSwagger)
+
+	// Server the swagger UI and point it to the swagger JSON file
+	fs := http.FileServer(http.Dir("middleware/swagger-ui"))
+	mux.Handle("/swaggerui/", http.StripPrefix("/swaggerui", fs))
 
 	// Start HTTP server (and proxy calls to gRPC server endpoint)
 	log.Printf("Server starting on port :8080")
