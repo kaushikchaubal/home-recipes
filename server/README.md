@@ -36,3 +36,33 @@
     ```
     go build -o out/recipes-server server/recipes/main.go && ./out/recipes-server
     ```
+
+### Steps to Dockerise the server
+
+1. First, ensure that your server is running locally following the steps above
+
+2. Create a docker build
+    ```
+    cd home-recipes
+    docker build -t kaushikchaubal/home-recipes:<NewTagname> server/
+    ```
+
+3. Check if you can see the image
+    ```
+    docker images kaushikchaubal/home-recipes
+    ```
+
+4. Run the new image locally
+    ```
+    docker run -it -p 50000:50000 kaushikchaubal/home-recipes:<NewTagname>
+    ```
+
+5. (One per session) Login to docker
+    ```
+    docker login
+    ```
+
+6. Docker push the latest tag
+    ```
+    docker push kaushikchaubal/home-recipes:<NewTagname>
+    ```

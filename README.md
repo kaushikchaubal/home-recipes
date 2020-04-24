@@ -9,6 +9,7 @@ A simple full-stack app that uses multiple technologies to make it cross-platfor
 * Flutter
 * Dart
 * Material design
+* Docker
 
 ## Design
 The architecture, API, UI design details are available on this miro board: https://miro.com/app/board/o9J_ktw-EKc=/
@@ -17,3 +18,7 @@ The architecture, API, UI design details are available on this miro board: https
 This is how the app looks like as of now. This is available as an Android app, iOS app, Web app, MacOS app.
 
 ![home-recipes.gif](home-recipes.gif)
+
+## More info?
+Detailed information about the golang server, nodejs test-client, goland test-client, flutter app, docker in their respective README files
+
