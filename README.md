@@ -32,6 +32,10 @@ One of the key motivations to build this app was to experiment with different te
 * Web-app _(partial support)_
 * MacOS _(partial support)_
 
+### Middleware
+* HTTP-GRPC proxy implemented using gRPC-Gateway
+* Published Swagger UI on top of HTTP-GRPC proxy
+
 ### Server deployment
 * Created as a docker image
 * Tagged docker image hosted on dockerhub
@@ -53,9 +57,10 @@ One of the key motivations to build this app was to experiment with different te
 ## Developer info
 * All different components are documented in their respective README files
 * The list of available README files are here:
-    * Server: server/README.md
-    * Client: client/home_recipes_app/README.md
-    * Node.js test client: client/test-client-node/README.md
-    * Golang test client: client/test-client-golang/README.md
-    * Deployment: deploy/README.md
+    * Server: https://github.com/kaushikchaubal/home-recipes/blob/master/server/README.md
+    * Client: https://github.com/kaushikchaubal/home-recipes/blob/master/client/home_recipes_app/README.md
+    * Middleware: https://github.com/kaushikchaubal/home-recipes/blob/master/middleware/README.md
+    * Node.js test client: https://github.com/kaushikchaubal/home-recipes/blob/master/client/test-client-node/README.md
+    * Golang test client: https://github.com/kaushikchaubal/home-recipes/blob/master/client/test-client-golang/README.md
+    * Deployment: https://github.com/kaushikchaubal/home-recipes/blob/master/deploy/README.md
 
