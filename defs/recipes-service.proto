@@ -2,7 +2,17 @@ syntax = "proto3";
 
 package recipes;
 
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
 option go_package = "recipes/generated";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "home-recipes";
+	};
+    schemes: HTTP;
+};
 
 message AddRecipeRequest {
     Recipe recipe = 1;
@@ -46,7 +56,12 @@ message GetIngredientsForAllRecipesResponse {
 
 service RecipesService {
     // unary
-    rpc AddRecipe (AddRecipeRequest) returns (AddRecipeResponse);
+    rpc AddRecipe (AddRecipeRequest) returns (AddRecipeResponse) {
+        option (google.api.http) = {
+            post: "/v1/homerecipes/addRecipe"
+            body: "*"
+            };
+    }
 
     // server-streaming
     rpc ListAllRecipes (ListAllRecipesRequest) returns (stream ListAllRecipesResponse);
