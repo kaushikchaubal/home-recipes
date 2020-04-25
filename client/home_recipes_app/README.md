@@ -6,6 +6,12 @@ This client runs on the following platforms:
 * Web app
 * MacOS app
 
+### Note: 
+To create the apk to run on an Andriod phone, you need to run the following command:
+    ```
+    flutter build apk -debug
+    ```
+
 ### Steps taken to connect client to server
 
 1. Install dart
