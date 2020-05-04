@@ -36,6 +36,10 @@ One of the key motivations to build this app was to experiment with different te
 * HTTP-GRPC proxy implemented using gRPC-Gateway
 * Published Swagger UI on top of HTTP-GRPC proxy
 
+### Telemetry
+* [Prometheus](https://github.com/prometheus/prometheus) to collect metrics
+* [Grafana](https://grafana.com/) to visualize metrics
+
 ### Server deployment
 * Created as a docker image
 * Tagged docker image hosted on dockerhub
