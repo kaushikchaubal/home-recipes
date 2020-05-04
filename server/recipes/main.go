@@ -1,87 +1,66 @@
 package main
 
 import (
-	"home-recipes/server/recipes/data"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"google.golang.org/grpc"
 	"home-recipes/server/recipes/generated"
-	"io"
+	"home-recipes/server/recipes/handlers"
 	"log"
 	"net"
-
-	"golang.org/x/net/context"
-	"google.golang.org/grpc"
+	"net/http"
+	"sync"
 )
 
-const port = ":50000"
-
-type server struct{}
-
-func (s *server) AddRecipe(ctx context.Context, req *generated.AddRecipeRequest) (*generated.AddRecipeResponse, error) {
-	log.Printf("Adding new recipe\t\tName: %v, Cuisine: %v", req.GetRecipe().GetName(), req.GetRecipe().GetCuisine())
-	return &generated.AddRecipeResponse{Success: true}, nil
-}
-
-func (s *server) ListAllRecipes(req *generated.ListAllRecipesRequest, stream generated.RecipesService_ListAllRecipesServer) error {
-	log.Printf("Listing all available recipes")
-
-	for _, recipe := range data.Recipes {
-		stream.Send(&generated.ListAllRecipesResponse{Recipe: &recipe})
-	}
-
-	return nil
-}
-
-func (s *server) ListAllIngredientsAtHome(stream generated.RecipesService_ListAllIngredientsAtHomeServer) error {
-	log.Printf("Noting all the ingredients that you have at home:")
-
-	for {
-		data, err := stream.Recv()
-		if err == io.EOF {
-			return stream.SendAndClose((&generated.ListAllIngredientsAtHomeResponse{Success: true}))
-		}
-		if err != nil {
-			return err
-		}
-
-		log.Printf("You have %v quantity of %v", data.GetIngredient().GetQuantity(), data.GetIngredient().GetName())
-	}
-}
-
-func (s *server) GetIngredientsForAllRecipes(stream generated.RecipesService_GetIngredientsForAllRecipesServer) error {
-	log.Printf("For all recipes sent, I will reply back with a list of ingredients")
-
-	for {
-		recipe, err := stream.Recv()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return err
-		}
-
-		log.Printf("You have requested ingredients for %v", recipe.GetRecipe().GetName())
-
-		RecipeToIngredients := data.RecipeToIngredientsMap()
-		ingredients := RecipeToIngredients[recipe.GetRecipe().GetName()]
-		for _, item := range ingredients {
-			stream.Send(&generated.GetIngredientsForAllRecipesResponse{Ingredient: &item})
-		}
-	}
-
-	return nil
-}
+const grpcPort = ":50000"
+const metricsPort = ":2112"
 
 func main() {
-	listener, err := net.Listen("tcp", port)
+	bootstraps := []interface{}{
+		startGRPCServer,
+		startMetricsServer,
+	}
+
+	var wg sync.WaitGroup
+	wg.Add(len(bootstraps))
+
+	for _, bootstrap := range bootstraps {
+		go bootstrap.(func(*sync.WaitGroup))(&wg)
+	}
+
+	wg.Wait()
+}
+
+func startGRPCServer(wg *sync.WaitGroup) {
+	defer wg.Done()
+	log.Printf("Starting gRPC server on port %v", grpcPort)
+
+	listener, err := net.Listen("tcp", grpcPort)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	s := grpc.NewServer()
-	log.Printf("Started server on %v", port)
+	server := grpc.NewServer()
 
-	generated.RegisterRecipesServiceServer(s, &server{})
+	generated.RegisterRecipesServiceServer(server, &handlers.GRPCHanlders{})
 
-	s.Serve(listener)
+	err = server.Serve(listener)
 
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func startMetricsServer(wg *sync.WaitGroup) {
+	defer wg.Done()
+	log.Printf("Started metrics server on port %v", metricsPort)
+
+	http.Handle("/metrics", promhttp.Handler())
+	http.Handle("/hello", &handlers.HttpHandler{})
+
+	err := http.ListenAndServe(metricsPort, nil)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }

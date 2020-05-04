@@ -1,3 +1,9 @@
+# Home-Recipes Server 
+
+The server uses these ports:
+* `50000` for gRPC
+* `2112` for HTTP (including telemetry)
+
 ### Steps followed to create server:
 
 1. Ensure golang is installed, GOPATH is set
@@ -54,7 +60,7 @@
 
 4. Run the new image locally
     ```
-    docker run -it -p 50000:50000 kaushikchaubal/home-recipes:<NewTagname>
+    docker run -it -p 50000:50000 -p 2112:2112 kaushikchaubal/home-recipes:<NewTagname>
     ```
 
 5. (One per session) Login to docker
