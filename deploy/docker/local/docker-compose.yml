@@ -4,7 +4,7 @@ services:
   prometheus:
     build:
       context: prometheus
-      dockerfile: Dockerfile
+      dockerfile: prometheus/Dockerfile
     image: my-prometheus:latest
     container_name: my-prometheus
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
   grafana:
     build:
       context: grafana
-      dockerfile: Dockerfile
+      dockerfile: grafana/Dockerfile
     image: my-grafana:latest
     container_name: my-grafana
     restart: unless-stopped

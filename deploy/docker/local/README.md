@@ -15,11 +15,11 @@ It's expected that the image **kaushikchaubal/home-recipes** for container  **ho
 
 From project root build docker compose
 ```
-docker-compose -f docker/local/docker-compose.yml build
+docker-compose -f deploy/docker/local/docker-compose.yml build
 ```
 From project root build docker compose
 ```
-docker-compose -f docker/local/docker-compose.yml up
+docker-compose -f deploy/docker/local/docker-compose.yml up
 ```
 
 ## Telemetry
