@@ -4,7 +4,7 @@ A simple app that helps to share, learn, innovative with recipes at home!
 ## Demo
 Here is a GIF of how the app looks like:
 
-![home-recipes.gif](home-recipes.gif)
+![home-recipes.gif](assets/home-recipes.gif)
 
 ## Tech stack
 One of the key motivations to build this app was to experiment with different technologies. The technologies used to build this app are explained in the following sections:
@@ -56,7 +56,7 @@ One of the key motivations to build this app was to experiment with different te
 ## Architecture
 The final architecture of the designed system is as seen here:
 
-![architecture-diagram.png](architecture-diagram.png)
+![architecture-diagram.png](assets/architecture-diagram.png)
 
 ## Digital whiteboarding
 * As part of the implementation stage, Miro was used as the digital whiteboard of choice
