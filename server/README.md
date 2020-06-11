@@ -20,27 +20,44 @@ The server uses these ports:
         protoc --version
         ```
 
-4. Install protoc-gen-go & add to PATH
+4. Install "protoc-gen-go" & "promhttp" and add to PATH
     ```
     go get github.com/golang/protobuf/protoc-gen-go
+    go get github.com/prometheus/client_golang/prometheus/promhttp
     PATH="$PATH:$(go env GOPATH)/bin"
     ```
 
-5. (optional) Install protobuf support for VS code
+5. (optional) Add gRPC reflection to the service if you want to test the services using the Evans CLI (mentioned below)
+
+    Add following import to the main.go server file
+    ```
+    "google.golang.org/grpc/reflection"
+    ```
+
+6. (optional) Install protobuf support for VS code
     * Available here: https://marketplace.visualstudio.com/items?itemName=zxh404.vscode-proto3
 
-6. Create your proto file
+7. Create your proto file
 
-7. Run the protoc command to create the generated code
+8. Run the protoc command to create the generated code
     ```
     protoc ./defs/recipes-service.proto --go_out=plugins=grpc:./server
     ```
 
-7. Implement your server
+9. Implement your server
 
-8. Run your server
+10. Run your server
     ```
     go build -o out/recipes-server server/recipes/main.go && ./out/recipes-server
+    ```
+
+### Steps to test the services using Evans CLI/REPL
+
+1. Install [Evans](https://github.com/ktr0731/evans) REPL 
+
+2. After successful installation, navigate to the folder where the proto files are located and run 
+    ```
+    evans -p 50000 recipes-service.proto
     ```
 
 ### Steps to Dockerise the server
