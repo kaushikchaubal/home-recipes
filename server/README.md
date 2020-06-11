@@ -60,7 +60,7 @@ The server uses these ports:
     evans -p 50000 recipes-service.proto
     ```
 
-3. ![evans_repl.gif](assets/evans_repl.gif)    
+3. ![evans_repl.gif](../assets/evans_repl.gif)    
 
 ### Steps to Dockerise the server
 
