@@ -1,14 +1,16 @@
 package main
 
 import (
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"google.golang.org/grpc"
 	"home-recipes/server/recipes/generated"
 	"home-recipes/server/recipes/handlers"
 	"log"
 	"net"
 	"net/http"
 	"sync"
+
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 const grpcPort = ":50000"
@@ -43,6 +45,8 @@ func startGRPCServer(wg *sync.WaitGroup) {
 	server := grpc.NewServer()
 
 	generated.RegisterRecipesServiceServer(server, &handlers.GRPCHanlders{})
+
+	reflection.Register(server)
 
 	err = server.Serve(listener)
 
