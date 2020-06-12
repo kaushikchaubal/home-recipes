@@ -60,6 +60,8 @@ The server uses these ports:
     evans -p 50000 recipes-service.proto
     ```
 
+The gRPC services can be tested using Evans CLI/REPL as follows:
+
 ![evans_repl.gif](../assets/evans_repl.gif)
 
 ![evans_show_services.gif](../assets/evans_show_services.gif)
