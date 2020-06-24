@@ -22,14 +22,11 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos
     compile group: 'com.google.api.grpc', name: 'proto-google-common-protos', version: '1.17.0'
 
+    protobuf files('/Users/bhargav/Documents/GitHub/home-recipes/defs/proto-dependencies.zip')
 }
 
 sourceSets {
     main {
-        proto {
-            srcDirs 'src/main/proto/google/api'
-            srcDirs 'src/main/proto/protoc-gen-swagger/options'
-        }
         java {
             srcDirs 'build/generated/source/proto/main/grpc'
             srcDirs 'build/generated/source/proto/main/java'
