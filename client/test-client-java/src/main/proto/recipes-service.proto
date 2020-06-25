@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package recipes;
+
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+option go_package = "recipes/generated";
+option java_package = "com.homerecipes";
+option java_multiple_files = true;
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "home-recipes";
+	};
+    schemes: HTTP;
+};
+
+message AddRecipeRequest {
+    Recipe recipe = 1;
+}
+
+message AddRecipeResponse {
+    bool success = 1;
+}
+
+message ListAllRecipesRequest {}
+
+message ListAllRecipesResponse {
+    Recipe recipe = 1;
+}
+
+message Recipe {
+    string name = 1;
+    string cuisine = 2;
+}
+
+message Ingredient {
+    string name = 1;
+    string quantity = 2;
+}
+
+message ListAllIngredientsAtHomeRequest {
+    Ingredient ingredient = 1;
+}
+
+message ListAllIngredientsAtHomeResponse {
+    bool success = 1;
+}
+
+message GetIngredientsForAllRecipesRequest {
+    Recipe recipe = 1;
+}
+
+message GetIngredientsForAllRecipesResponse {
+    Ingredient ingredient = 1;
+}
+
+service RecipesService {
+    // unary
+    rpc AddRecipe (AddRecipeRequest) returns (AddRecipeResponse) {
+        option (google.api.http) = {
+            post: "/v1/homerecipes/addRecipe"
+            body: "*"
+        };
+
+        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+            summary: "Add a recipe"
+            description: "Add a reciper to the server."
+            tags: "Recipes"
+        };
+    }
+
+    // server-streaming
+    rpc ListAllRecipes (ListAllRecipesRequest) returns (stream ListAllRecipesResponse) {
+        option (google.api.http) = {
+            get: "/v1/homerecipes/allRecipes/list"
+        };
+
+        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+            summary: "List all recipes"
+            description: "Get a list of all recipes available from the server"
+            tags: "Recipes"
+        };
+    }
+
+    // client-streaming
+    rpc ListAllIngredientsAtHome (stream ListAllIngredientsAtHomeRequest) returns (ListAllIngredientsAtHomeResponse) {
+        option (google.api.http) = {
+            post: "/v1/homerecipes/allIngredients/post"
+            body: "*"
+        };
+
+        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+            summary: "Post all ingredients"
+            description: "Post a list of all the ingrredients that are available in the kitchen from client to the server"
+            tags: "Ingredients"
+        };
+    }
+
+    // Bidirectional-streaming
+    rpc GetIngredientsForAllRecipes (stream GetIngredientsForAllRecipesRequest) returns (stream GetIngredientsForAllRecipesResponse) {
+        option (google.api.http) = {
+            post: "/v1/homerecipes/getIngredients/all"
+            body: "*"
+        };
+
+        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+            summary: "Get required ingredients for a list of recipes"
+            description: "To help you cook the best recipes, this API provides you all the required ingredients"
+            tags: "Ingredients"
+        };
+    }
+}
